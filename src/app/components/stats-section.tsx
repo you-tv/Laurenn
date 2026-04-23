@@ -26,6 +26,21 @@ export function StatsSection() {
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Heading */}
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">
+            Des millions de personnes travaillent déjà avec{" "}
+            <span className="bg-gradient-to-r from-[#5e2d91] to-[#CF0072] bg-clip-text text-transparent">
+              Rainbow
+            </span>
+          </h2>
+        </motion.div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Stat 1 */}
           <motion.div 

@@ -13,7 +13,6 @@ import { NotifyModal } from "../components/notify-modal";
 import { DemoModal } from "../components/demo-modal";
 import { StripeCheckout } from "../components/stripe-checkout";
 import { ProductRangeSection } from "../components/product-range-section";
-import { TrustedBySection } from "../components/trusted-by-section";
 import { DiagonalGradientBackground } from "../components/diagonal-gradient-background";
 import { SecurityCertificationsSection } from "../components/security-certifications-section";
 import { TargetAudienceSection } from "../components/target-audience-section";
@@ -106,9 +105,6 @@ export default function Home() {
         
         {/* Stats Section - Key Metrics */}
         <StatsSection />
-        
-        {/* Trusted By Section - Client Logos */}
-        <TrustedBySection />
         
         {/* Security Certifications Section - Compliance & Trust */}
         <SecurityCertificationsSection />
