@@ -6,8 +6,6 @@ import Support from "./pages/support.tsx";
 import Blog from "./pages/blog.tsx";
 import BlogPost from "./pages/blog-post.tsx";
 import Product from "./pages/product.tsx";
-import ProductCollaboration from "./pages/product-collaboration.tsx";
-import ProductWebinar from "./pages/product-webinar.tsx";
 import Pricing from "./pages/pricing.tsx";
 import PricingCollaboration from "./pages/pricing-collaboration.tsx";
 import Login from "./pages/login.tsx";
@@ -37,18 +35,6 @@ export const router = createBrowserRouter([
       {
         path: "/product",
         element: <Product />,
-      },
-      {
-        path: "/product/collaboration",
-        element: <ProductCollaboration />,
-      },
-      {
-        path: "/product/webinar-space",
-        element: <WebinarSpace />,
-      },
-      {
-        path: "/product/webinar",
-        element: <ProductWebinar />,
       },
       {
         path: "/pricing",

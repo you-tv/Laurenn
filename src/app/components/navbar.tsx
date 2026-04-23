@@ -80,84 +80,31 @@ export function Navbar() {
   ];
 
   return (
-    <motion.nav 
-      className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-        <div className="flex justify-between items-center h-28">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <motion.div 
-            className="flex items-center -ml-2"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          <div className="flex items-center -ml-2">
             <Link to="/" className="cursor-pointer hover:opacity-80 transition-opacity">
               <img 
                 src={rainbowLogo} 
                 alt="Rainbow" 
-                className="h-24 rounded-[10px]"
+                className="h-16 rounded-[10px]"
               />
             </Link>
-          </motion.div>
+          </div>
 
           {/* Desktop Navigation - Left Side (Promotional Links) */}
-          <motion.div 
-            className="hidden md:flex items-center gap-8 flex-1 ml-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <div 
-              className="relative" 
-              ref={productsRef}
-              onMouseEnter={() => setProductsDropdownOpen(true)}
-              onMouseLeave={() => setProductsDropdownOpen(false)}
-            >
-              <motion.button
-                className="text-gray-700 hover:text-[#ff6b35] transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+          <div className="hidden md:flex items-center gap-8 flex-1 ml-12">
+            <Link to="/product">
+              <button className="text-gray-700 hover:text-[#ff6b35] transition-colors font-medium">
                 {t.nav.product}
-              </motion.button>
-              
-              <AnimatePresence>
-                {productsDropdownOpen && (
-                  <motion.div 
-                    className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    {productsLinks.map((link, index) => (
-                      <Link
-                        key={index}
-                        to={link.href}
-                        className="block px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
-                      >
-                        <div className="flex items-center gap-2">
-                          <div className="font-semibold text-gray-900 text-sm">{link.title}</div>
-                        </div>
-                        <div className="text-xs text-gray-600">{link.description}</div>
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+              </button>
+            </Link>
             <Link to="/pricing">
-              <motion.button
-                className="text-gray-700 hover:text-[#ff6b35] transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <button className="text-gray-700 hover:text-[#ff6b35] transition-colors font-medium">
                 {t.nav.pricing}
-              </motion.button>
+              </button>
             </Link>
             <div 
               className="relative" 
@@ -165,13 +112,9 @@ export function Navbar() {
               onMouseEnter={() => setResourcesDropdownOpen(true)}
               onMouseLeave={() => setResourcesDropdownOpen(false)}
             >
-              <motion.button
-                className="text-gray-700 hover:text-[#ff6b35] transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <button className="text-gray-700 hover:text-[#ff6b35] transition-colors font-medium">
                 {t.nav.resources}
-              </motion.button>
+              </button>
               
               <AnimatePresence>
                 {resourcesDropdownOpen && (
@@ -208,23 +151,14 @@ export function Navbar() {
               </AnimatePresence>
             </div>
             <Link to="/about">
-              <motion.button
-                className="text-gray-700 hover:text-[#ff6b35] transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <button className="text-gray-700 hover:text-[#ff6b35] transition-colors font-medium">
                 {t.nav.about}
-              </motion.button>
+              </button>
             </Link>
-          </motion.div>
+          </div>
 
           {/* Desktop Navigation - Right Side (Actions) */}
-          <motion.div 
-            className="hidden md:flex items-center gap-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
+          <div className="hidden md:flex items-center gap-6">
             {/* Language Selector */}
             <div className="flex items-center gap-2">
               <select
@@ -241,28 +175,23 @@ export function Navbar() {
             </div>
             
             <Link to="/login">
-              <motion.button
-                className="text-gray-700 hover:text-[#5e2d91] transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
+              <button className="text-gray-700 hover:text-[#5e2d91] transition-colors font-medium">
                 {t.nav.signIn}
-              </motion.button>
+              </button>
             </Link>
-          </motion.div>
+          </div>
 
           {/* Mobile menu button */}
-          <motion.button
+          <button
             className="md:hidden p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            whileTap={{ scale: 0.9 }}
           >
             {mobileMenuOpen ? (
               <X className="h-6 w-6 text-gray-700" />
             ) : (
               <Menu className="h-6 w-6 text-gray-700" />
             )}
-          </motion.button>
+          </button>
         </div>
 
         {/* Mobile Navigation */}
@@ -275,44 +204,16 @@ export function Navbar() {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="relative">
-                <button
-                  onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
-                >
-                  {t.nav.product}
-                </button>
-                
-                <AnimatePresence>
-                  {productsDropdownOpen && (
-                    <motion.div 
-                      className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {productsLinks.map((link, index) => (
-                        <Link
-                          key={index}
-                          to={link.href}
-                          className="block px-4 py-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0"
-                        >
-                          <div className="font-semibold text-gray-900 text-sm mb-1">{link.title}</div>
-                          <div className="text-xs text-gray-600">{link.description}</div>
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+              <Link to="/product" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">
+                {t.nav.product}
+              </Link>
               <Link to="/pricing" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">
                 {t.nav.pricing}
               </Link>
               <div className="relative">
                 <button
                   onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
-                  className="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
+                  className="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
                 >
                   {t.nav.resources}
                 </button>
@@ -320,10 +221,10 @@ export function Navbar() {
                 <AnimatePresence>
                   {resourcesDropdownOpen && (
                     <motion.div 
-                      className="absolute left-0 mt-2 w-32 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
+                      className="mt-2 w-full bg-white rounded-lg border border-gray-200 overflow-hidden"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.2 }}
                     >
                       {resourcesLinks.map((link, index) => (
@@ -361,6 +262,6 @@ export function Navbar() {
           )}
         </AnimatePresence>
       </div>
-    </motion.nav>
+    </nav>
   );
 }

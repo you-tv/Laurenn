@@ -1,123 +1,108 @@
-import { motion, useMotionValue, useTransform, animate, useInView } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { motion, useSpring, useTransform, useInView } from "motion/react";
+import { useEffect, useRef } from "react";
 
-function Counter({ value, suffix = "", duration = 2 }: { value: number; suffix?: string; duration?: number }) {
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => Math.round(latest));
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const [displayValue, setDisplayValue] = useState(0);
+function Counter({ value, direction = "up" }: { value: number, direction?: "up" | "down" }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const springValue = useSpring(0, {
+    stiffness: 40,
+    damping: 20,
+  });
+
+  const displayValue = useTransform(springValue, (current) => 
+    Math.round(current).toLocaleString()
+  );
 
   useEffect(() => {
     if (isInView) {
-      const controls = animate(count, value, { duration, ease: "easeOut" });
-      return controls.stop;
+      springValue.set(value);
     }
-  }, [isInView, count, value, duration]);
+  }, [isInView, value, springValue]);
 
-  useEffect(() => {
-    return rounded.on("change", (latest) => setDisplayValue(latest));
-  }, [rounded]);
-
-  return <span ref={ref}>{displayValue}{suffix}</span>;
+  return <motion.span ref={ref}>{displayValue}</motion.span>;
 }
 
 export function StatsSection() {
+  const stats = [
+    {
+      value: 90,
+      suffix: "%",
+      label: "des utilisateurs indiquent que Rainbow les aide à rester mieux connectés",
+      footnote: "4"
+    },
+    {
+      value: 43,
+      suffix: "",
+      label: "le nombre moyen d'applications utilisées par les équipes dans Rainbow",
+      footnote: "3"
+    },
+    {
+      value: 87,
+      suffix: "%",
+      label: "des utilisateurs déclarent que Rainbow les aide à collaborer plus efficacement",
+      footnote: "4"
+    }
+  ];
+
   return (
-    <section className="py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading */}
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+    <section className="relative bg-[#4a2373] text-white pb-24 lg:pb-32 mt-24 md:mt-40">
+      {/* Curved Divider at the top - Bulging Upwards */}
+      <div className="absolute top-0 left-0 w-full overflow-hidden -translate-y-[99%] pointer-events-none">
+        <svg 
+          viewBox="0 0 1440 160" 
+          preserveAspectRatio="none" 
+          className="w-full h-[80px] sm:h-[120px] md:h-[160px] lg:h-[200px]"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900">
-            Des millions de personnes travaillent déjà avec{" "}
-            <span className="bg-gradient-to-r from-[#5e2d91] to-[#CF0072] bg-clip-text text-transparent">
-              Rainbow
-            </span>
-          </h2>
-        </motion.div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Stat 1 */}
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            whileHover={{ y: -3 }}
-          >
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:border-[#5e2d91]/30 hover:shadow-lg transition-all duration-300">
-              <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#5e2d91] to-[#CF0072] bg-clip-text text-transparent mb-3">
-                <Counter value={4} suffix="M" />
-              </div>
-              <div className="text-gray-600 text-sm lg:text-base font-medium">
-                utilisateurs par mois
-              </div>
-            </div>
-          </motion.div>
+          <path 
+            fill="#4a2373" 
+            d="M0,160 C480,0 960,0 1440,160 V160 H0 Z"
+          />
+        </svg>
+      </div>
 
-          {/* Stat 2 */}
-          <motion.div 
-            className="text-center"
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Heading */}
+        <div className="text-center mb-20 md:mb-32">
+          <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            whileHover={{ y: -3 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto"
           >
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:border-[#5e2d91]/30 hover:shadow-lg transition-all duration-300">
-              <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#5e2d91] to-[#CF0072] bg-clip-text text-transparent mb-3">
-                <Counter value={1} suffix="M" />
-              </div>
-              <div className="text-gray-600 text-sm lg:text-base font-medium">
-                interactions par jour
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Stat 3 */}
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            whileHover={{ y: -3 }}
-          >
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:border-[#5e2d91]/30 hover:shadow-lg transition-all duration-300">
-              <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#5e2d91] to-[#CF0072] bg-clip-text text-transparent mb-3">
-                <Counter value={47} suffix="K" />
-              </div>
-              <div className="text-gray-600 text-sm lg:text-base font-medium">
-                entreprises
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Stat 4 */}
-          <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            whileHover={{ y: -3 }}
-          >
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:border-[#5e2d91]/30 hover:shadow-lg transition-all duration-300">
-              <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#5e2d91] to-[#CF0072] bg-clip-text text-transparent mb-3">
-                <Counter value={370} />
-              </div>
-              <div className="text-gray-600 text-sm lg:text-base font-medium">
-                utilisateurs actifs quotidiens
-              </div>
-            </div>
-          </motion.div>
+            Nous sommes là pour faire grandir votre entreprise
+          </motion.h2>
         </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-16">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="text-center group"
+            >
+              <div className="text-6xl lg:text-8xl font-extrabold text-[#c084fc] mb-6 transition-transform group-hover:scale-105 duration-300">
+                <Counter value={stat.value} />
+                {stat.suffix}
+              </div>
+              <p className="text-lg md:text-xl font-medium text-white/90 max-w-[280px] mx-auto leading-relaxed">
+                {stat.label}
+                <sup className="text-xs ml-0.5 opacity-60 font-bold">{stat.footnote}</sup>
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Subtle background decoration - contained in overflow-hidden box to avoid bleed */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#6b21a8] rounded-full blur-[160px] opacity-20" />
       </div>
     </section>
   );

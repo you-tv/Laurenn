@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { RadialIntro } from "./ui/radial-intro";
 import perpignanLogo from "figma:asset/perpignan.png";
 import herrenbergLogo from "figma:asset/herrenberg.png";
 import bestfordLogo from "figma:asset/bestford.png";
@@ -8,372 +9,85 @@ import loughboroughLogo from "figma:asset/london_university.png";
 import occitanieLogo from "figma:asset/region_occitanie.png";
 import chuRennesLogo from "figma:asset/chu_rennes.png";
 import chmMayotteLogo from "figma:asset/chm_mayotte.png";
-import hellwegLogo from "figma:asset/hellweg.png";
-import nexonLogo from "figma:asset/nexon.png";
-import kingswayLogo from "figma:asset/kingsway_hospitals.jpg";
-import careOutlookLogo from "figma:asset/care_outlook.jpg";
-import paytrenLogo from "figma:asset/paytren.png";
-import mayfairLogo from "figma:asset/mayfair_hotels.jpg";
-import domaLogo from "figma:asset/doma_hotels.jpg";
-import taketaLogo from "figma:asset/taketa_city.png";
+import rainbowNameLogo from "figma:asset/rainbow_name_logo.png";
 import { useLanguage } from "../i18n/language-context";
 
 export function TrustedBySection() {
   const { t } = useLanguage();
-  
+
+  const orbitItems = [
+    { id: 1, name: "Perpignan", src: perpignanLogo },
+    { id: 2, name: "Herrenberg", src: herrenbergLogo },
+    { id: 3, name: "Bestford", src: bestfordLogo },
+    { id: 4, name: "Eydap", src: eydapLogo },
+    { id: 5, name: "Montpellier", src: montpellierMetropoleLogo },
+    { id: 6, name: "London University", src: loughboroughLogo },
+    { id: 7, name: "Occitanie", src: occitanieLogo },
+    { id: 8, name: "CHU Rennes", src: chuRennesLogo },
+    { id: 9, name: "CHM Mayotte", src: chmMayotteLogo },
+  ];
+
   return (
-    <section className="py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="text-gray-500 mb-8 text-xl font-semibold">{t.hero.trustedBy}</p>
-          
-          {/* Infinite Scrolling Carousel */}
-          <div className="relative overflow-hidden py-8">
-            {/* Gradient overlays for smooth edges */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
-            
-            {/* Scrolling container */}
-            <motion.div
-              className="flex gap-16 lg:gap-20"
-              animate={{
-                x: [0, -1000],
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 25,
-                  ease: "linear",
-                },
-              }}
+    <section className="py-24 lg:py-32 bg-[#F9FAFB] relative overflow-hidden border-y border-gray-100">
+      {/* Background Decoration */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-purple-50 rounded-full blur-[120px] opacity-60" />
+        <div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-[120px] opacity-60" />
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#5e2d91 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16 lg:mb-24">
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[#5e2d91] font-bold tracking-wider text-sm uppercase mb-4"
+          >
+            {t.hero.trustedBy}
+          </motion.p>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight"
+          >
+            Ils nous font confiance
+          </motion.h2>
+        </div>
+
+        <div className="flex justify-center items-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <RadialIntro 
+              orbitItems={orbitItems} 
+              stageSize={typeof window !== 'undefined' && window.innerWidth < 768 ? 320 : 560}
+              imageSize={typeof window !== 'undefined' && window.innerWidth < 768 ? 60 : 100}
             >
-              {/* Premier groupe de logos */}
-              <div className="flex gap-16 lg:gap-20 items-center shrink-0">
+              <div className="relative group">
+                {/* Center Logo Glow */}
+                <div className="absolute inset-0 bg-purple-500 blur-2xl opacity-20 group-hover:opacity-30 transition-opacity rounded-full scale-150" />
+                
                 <img 
-                  src={bestfordLogo} 
-                  alt="BESFORD" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={perpignanLogo} 
-                  alt="Perpignan Méditerranée" 
-                  className="h-28 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={eydapLogo} 
-                  alt="EYDAP" 
-                  className="h-42 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={herrenbergLogo} 
-                  alt="Herrenberg" 
-                  className="h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={montpellierMetropoleLogo} 
-                  alt="Montpellier Méditerranée Métropole" 
-                  className="h-32 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={loughboroughLogo} 
-                  alt="London University" 
-                  className="h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={occitanieLogo} 
-                  alt="Région Occitanie" 
-                  className="h-24 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={chuRennesLogo} 
-                  alt="CHU Rennes" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={chmMayotteLogo} 
-                  alt="CHM Mayotte" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={hellwegLogo} 
-                  alt="Hellweg" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={nexonLogo} 
-                  alt="Nexon" 
-                  className="h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={kingswayLogo} 
-                  alt="Kingsway Hospitals" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={careOutlookLogo} 
-                  alt="Care Outlook" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={paytrenLogo} 
-                  alt="Paytren" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={mayfairLogo} 
-                  alt="Mayfair Hotels" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={domaLogo} 
-                  alt="Doma Hotels" 
-                  className="h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={taketaLogo} 
-                  alt="Taketa City" 
-                  className="h-24 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
+                  src={rainbowNameLogo} 
+                  alt="Rainbow" 
+                  className="relative h-12 md:h-20 w-auto object-contain drop-shadow-sm transition-transform group-hover:scale-105 duration-500"
                 />
               </div>
+            </RadialIntro>
+          </motion.div>
+        </div>
 
-              {/* Deuxième groupe de logos (duplication pour effet infini) */}
-              <div className="flex gap-16 lg:gap-20 items-center shrink-0">
-                <img 
-                  src={bestfordLogo} 
-                  alt="BESFORD" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={perpignanLogo} 
-                  alt="Perpignan Méditerranée" 
-                  className="h-28 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={eydapLogo} 
-                  alt="EYDAP" 
-                  className="h-42 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={herrenbergLogo} 
-                  alt="Herrenberg" 
-                  className="h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={montpellierMetropoleLogo} 
-                  alt="Montpellier Méditerranée Métropole" 
-                  className="h-32 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={loughboroughLogo} 
-                  alt="London University" 
-                  className="h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={occitanieLogo} 
-                  alt="Région Occitanie" 
-                  className="h-24 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={chuRennesLogo} 
-                  alt="CHU Rennes" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={chmMayotteLogo} 
-                  alt="CHM Mayotte" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={hellwegLogo} 
-                  alt="Hellweg" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={nexonLogo} 
-                  alt="Nexon" 
-                  className="h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={kingswayLogo} 
-                  alt="Kingsway Hospitals" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={careOutlookLogo} 
-                  alt="Care Outlook" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={paytrenLogo} 
-                  alt="Paytren" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={mayfairLogo} 
-                  alt="Mayfair Hotels" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={domaLogo} 
-                  alt="Doma Hotels" 
-                  className="h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={taketaLogo} 
-                  alt="Taketa City" 
-                  className="h-24 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-              </div>
-
-              {/* Troisième groupe de logos (pour assurer la continuité) */}
-              <div className="flex gap-16 lg:gap-20 items-center shrink-0">
-                <img 
-                  src={bestfordLogo} 
-                  alt="BESFORD" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={perpignanLogo} 
-                  alt="Perpignan Méditerranée" 
-                  className="h-28 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={eydapLogo} 
-                  alt="EYDAP" 
-                  className="h-42 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={herrenbergLogo} 
-                  alt="Herrenberg" 
-                  className="h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={montpellierMetropoleLogo} 
-                  alt="Montpellier Méditerranée Métropole" 
-                  className="h-32 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={loughboroughLogo} 
-                  alt="London University" 
-                  className="h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={occitanieLogo} 
-                  alt="Région Occitanie" 
-                  className="h-24 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={chuRennesLogo} 
-                  alt="CHU Rennes" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={chmMayotteLogo} 
-                  alt="CHM Mayotte" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={hellwegLogo} 
-                  alt="Hellweg" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={nexonLogo} 
-                  alt="Nexon" 
-                  className="h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={kingswayLogo} 
-                  alt="Kingsway Hospitals" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={careOutlookLogo} 
-                  alt="Care Outlook" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={paytrenLogo} 
-                  alt="Paytren" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={mayfairLogo} 
-                  alt="Mayfair Hotels" 
-                  className="h-20 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={domaLogo} 
-                  alt="Doma Hotels" 
-                  className="h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-                <img 
-                  src={taketaLogo} 
-                  alt="Taketa City" 
-                  className="h-24 object-contain opacity-70 hover:opacity-100 transition-opacity"
-                  style={{ mixBlendMode: 'multiply' }}
-                />
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
+        <div className="text-center mt-20 lg:mt-32">
+          <p className="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
+            Plus de 40 000 organisations à travers le monde utilisent Rainbow pour transformer leur communication et collaborer efficacement.
+          </p>
+        </div>
       </div>
     </section>
   );

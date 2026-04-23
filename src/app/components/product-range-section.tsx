@@ -1,11 +1,9 @@
 import { ArrowRight } from "lucide-react";
 import { useLanguage } from "../i18n/language-context";
-import { motion } from "motion/react";
 import rainbowCollaborationImage from "figma:asset/rainbow_chat.png";
 import rainbowWebinarImage from "figma:asset/webinar_live.png";
 import rainbowWebinarLogo from "figma:asset/rainbow_webinar_logo.png";
 import rainbowCollaborationLogo from "figma:asset/rainbow_collaboration.png";
-import overlayImage from "figma:asset/page_bg.png"; // Reusing page_bg as overlay or another suitable image
 
 export function ProductRangeSection() {
   const { t } = useLanguage();
@@ -15,7 +13,6 @@ export function ProductRangeSection() {
       id: 'collaboration',
       title: 'Rainbow Collaboration',
       image: rainbowCollaborationImage,
-      bgGradient: 'from-[#E6F4FA] to-[#D0E9F5]', // Dégradé bleu clair
       bgColor: 'bg-white',
       buttonColor: 'bg-[#0085CA] hover:bg-[#006BA0]',
       accentColor: '#0085CA',
@@ -27,7 +24,6 @@ export function ProductRangeSection() {
       id: 'webinar',
       title: 'Rainbow Webinar',
       image: rainbowWebinarImage,
-      bgGradient: 'from-[#FFF0E6] to-[#FFE0CC]', // Dégradé orange clair
       bgColor: 'bg-white',
       buttonColor: 'bg-[#FF4500] hover:bg-[#E03D00]',
       accentColor: '#FF4500',
@@ -38,77 +34,63 @@ export function ProductRangeSection() {
   ];
 
   return (
-    <section className="py-24">
+    <section className="py-24 bg-gray-50 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold mb-6">
-            <span className="text-[#5e2d91]">Trouvez la </span>
-            <span className="bg-gradient-to-r from-[#5e2d91] to-[#CF0072] bg-clip-text text-transparent">
-              solution
-            </span>
-            <span className="text-[#5e2d91]"> qui vous correspond le mieux</span>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-gray-900">
+            Trouvez la solution
+            <br />
+            <span className="text-[#5e2d91]">qui vous correspond le mieux</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {t.productRange.subtitle}
           </p>
-          
-          {/* Product Pills */}
-          
         </div>
 
         {/* Product Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {products.map((product, index) => {
+          {products.map((product) => {
             return (
-              <motion.div
+              <div
                 key={product.id}
                 className="group relative"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <div className={`${product.bgColor} rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2 border border-gray-100`}>
-                  {/* Image en haut avec overlay */}
+                <div className={`${product.bgColor} rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-200`}>
+                  {/* Image */}
                   {product.image && (
-                    <div className="relative h-80 overflow-hidden">
+                    <div className="relative h-72 overflow-hidden border-b border-gray-100 bg-gray-100">
                       <img 
                         src={product.image} 
                         alt={product.title} 
-                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                      />
-                      {/* Overlay gradient */}
-                      <div 
-                        className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500"
-                        style={{ background: `linear-gradient(135deg, transparent 0%, ${product.accentColor} 100%)` }}
+                        className="w-full h-full object-cover"
                       />
                     </div>
                   )}
                   
-                  {/* Contenu */}
+                  {/* Content */}
                   <div className="p-8">
-                    {/* Badge décoratif */}
+                    {/* Badge */}
                     <div className="inline-block mb-4">
                       <span 
-                        className="text-xs font-bold px-3 py-1 rounded-full text-white"
+                        className="text-xs font-bold px-3 py-1 rounded-md text-white"
                         style={{ backgroundColor: product.accentColor }}
                       >
                         {product.id === 'collaboration' ? 'COMMUNICATION' : 'ÉVÉNEMENTS'}
                       </span>
                     </div>
                     
-                    {/* Title */}
+                    {/* Logo */}
                     <div className="mb-4">
                       <img 
                         src={product.id === 'webinar' ? rainbowWebinarLogo : rainbowCollaborationLogo} 
                         alt={product.title} 
-                        className="h-16 object-contain"
+                        className="h-12 object-contain"
                       />
                     </div>
                     
                     {/* Description */}
-                    <p className="text-gray-700 mb-6 text-lg leading-relaxed">
+                    <p className="text-gray-600 mb-8 text-lg leading-relaxed min-h-[80px]">
                       {product.description}
                     </p>
                     
@@ -116,15 +98,15 @@ export function ProductRangeSection() {
                     {product.available && (
                       <a
                         href={product.link}
-                        className={`${product.buttonColor} text-white px-6 py-3 rounded-xl font-semibold inline-flex items-center gap-2 transition-all shadow-md hover:shadow-lg group/btn`}
+                        className={`${product.buttonColor} text-white px-6 py-3 rounded-md font-bold inline-flex items-center gap-2 transition-colors`}
                       >
                         {t.productRange.learnMore}
-                        <ArrowRight className="h-5 w-5 group-hover/btn:translate-x-1 transition-transform" />
+                        <ArrowRight className="h-5 w-5" />
                       </a>
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

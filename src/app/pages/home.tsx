@@ -113,26 +113,23 @@ export default function Home() {
         <ProductRangeSection />
         
         {/* CTA Section - Call to Action */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto rounded-3xl shadow-2xl px-8 py-16 text-center bg-cover bg-center relative overflow-hidden" style={{ backgroundImage: `url(${ctaBackground})` }}>
-            {/* Overlay léger pour améliorer la lisibilité du texte */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#5e2d91] to-[#CF0072] rounded-3xl"></div>
-            
-            <div className="relative z-10">
-              <h2 className="text-4xl font-bold text-white mb-4">Rainbow vous intéresse ?              </h2>
-              <p className="text-xl text-white/90 mb-8">Essayez Rainbow gratuitement pendant 30 jours, sans carte bancaire.</p>
-              <div className="flex flex-wrap gap-4 justify-center">
+        <section className="py-24 bg-white border-t border-gray-200">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl px-8 py-16 text-center bg-[#5e2d91]">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">Prêt à transformer vos communications ?</h2>
+              <p className="text-xl text-[#e9d5ff] mb-10 max-w-2xl mx-auto">Essayez Rainbow gratuitement pendant 30 jours, sans carte bancaire ni engagement.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/pricing"
-                  className="inline-block px-8 py-4 bg-white text-[#5e2d91] rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                  className="inline-block px-8 py-4 bg-white text-[#5e2d91] rounded-md font-bold hover:bg-gray-100 transition-colors shadow-sm"
                 >
-                  Commencer l'essai gratuit →
+                  Commencer l'essai gratuit
                 </Link>
                 <a
                   href="https://app.storylane.io/share/your-demo-link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-8 py-4 bg-white/10 text-white border-2 border-white rounded-lg font-semibold hover:bg-white/20 transition-colors backdrop-blur-sm"
+                  className="inline-block px-8 py-4 bg-[#4a2373] text-white rounded-md font-bold hover:bg-[#3d1c5d] transition-colors border border-[#4a2373]"
                 >
                   Voir une démo
                 </a>

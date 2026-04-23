@@ -188,3 +188,37 @@
     line-height: 1.5;
   }
 }
+
+/* Hero Shuffling Text Animation */
+.hero-word-loader {
+  display: inline-flex;
+  height: 1.2em;
+  overflow: hidden;
+  align-items: center;
+  vertical-align: bottom;
+  padding-bottom: 0.1em;
+}
+
+.hero-words {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.hero-word {
+  display: block;
+  height: 100%;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  color: #5e2d91; /* Primary Purple */
+  animation: hero_spin 8s infinite ease-in-out;
+  white-space: nowrap;
+}
+
+@keyframes hero_spin {
+  0%, 20% { transform: translateY(0); }
+  25%, 45% { transform: translateY(-100%); }
+  50%, 70% { transform: translateY(-200%); }
+  75%, 95% { transform: translateY(-300%); }
+  100% { transform: translateY(-400%); }
+}

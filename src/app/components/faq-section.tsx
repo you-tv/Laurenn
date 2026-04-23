@@ -75,15 +75,12 @@ export function FAQSection() {
   };
 
   return (
-    <section className="py-24">
+    <section className="py-24 bg-white border-t border-gray-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">
-            <span className="text-[#5e2d91]">Questions </span>
-            <span className="bg-gradient-to-r from-[#5e2d91] to-[#CF0072] bg-clip-text text-transparent">
-              Fréquentes
-            </span>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight text-gray-900">
+            Questions fréquentes
           </h2>
           <p className="text-xl text-gray-600">
             Tout ce que vous devez savoir sur Rainbow Webinar
@@ -111,18 +108,18 @@ export function FAQSection() {
             {faqs.map((faq, index) => (
               <div
                 key={faq.id}
-                className="border border-gray-200 rounded-xl bg-white/80 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:shadow-lg"
+                className="border border-gray-200 rounded-xl bg-white overflow-hidden transition-all duration-200 hover:border-[#5e2d91]"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full flex items-center justify-between p-6 text-left focus:outline-none focus:ring-2 focus:ring-[#5e2d91] focus:ring-offset-2 rounded-xl"
                   aria-expanded={openIndex === index}
                 >
-                  <span className="text-lg font-semibold text-gray-900 pr-8">
+                  <span className="text-lg font-bold text-gray-900 pr-8">
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className={`h-5 w-5 text-[#ff6b35] flex-shrink-0 transition-transform duration-300 ${
+                    className={`h-5 w-5 text-[#5e2d91] flex-shrink-0 transition-transform duration-200 ${
                       openIndex === index ? "rotate-180" : ""
                     }`}
                   />
@@ -135,7 +132,7 @@ export function FAQSection() {
                 >
                   <div className="px-6 pb-6">
                     <div className="pt-4 border-t border-gray-100">
-                      <p className="text-gray-600 leading-relaxed">
+                      <p className="text-gray-600 leading-relaxed text-lg">
                         {faq.answer}
                       </p>
                     </div>
@@ -148,12 +145,12 @@ export function FAQSection() {
 
         {/* Contact CTA */}
         <div className="mt-16 text-center">
-          <p className="text-gray-600 mb-4">
+          <p className="text-gray-600 mb-4 text-lg">
             Vous avez d'autres questions ?
           </p>
           <a
             href="mailto:support@rainbow-webinar.com"
-            className="inline-flex items-center gap-2 text-[#5e2d91] hover:text-[#ff6b35] font-semibold transition-colors"
+            className="inline-flex items-center gap-2 text-[#5e2d91] hover:underline font-bold transition-all text-lg"
           >
             Contactez notre équipe
             <svg

@@ -1,161 +1,94 @@
-import { motion } from "motion/react";
 import { Shield } from "lucide-react";
 import isoLogo from "figma:asset/iso27001.png";
 import anssiLogo from "figma:asset/anssi.png";
-import hdsLogo from "figma:asset/hds.webp";
 import ensLogo from "figma:asset/ens.jpg";
 import rgpdLogo from "figma:asset/rgpd.jpg";
 import acnLogo from "figma:asset/acn.png";
 import hipaaLogo from "figma:asset/hipaa.png";
+import rainbowLogo from "figma:asset/rainbow_name_logo.png";
 
 export function SecurityCertificationsSection() {
-  const certifications = [
-    {
-      logo: anssiLogo,
-      name: "ANSSI",
-      description: "Agence Nationale de la Sécurité des Systèmes d'Information",
-      color: "#5e2d91"
-    },
-    {
-      logo: isoLogo,
-      name: "ISO 27001",
-      description: "Management de la sécurité de l'information",
-      color: "#34B233"
-    },
-    {
-      logo: rgpdLogo,
-      name: "RGPD",
-      description: "Règlement Général sur la Protection des Données",
-      color: "#CF0072"
-    },
-    {
-      logo: ensLogo,
-      name: "ENS",
-      description: "Esquema Nacional de Seguridad (Espagne)",
-      color: "#FF4500"
-    },
-    {
-      logo: hdsLogo,
-      name: "HDS",
-      description: "Hébergeur de Données de Santé - Certification française",
-      color: "#0085CA"
-    },
-    {
-      logo: acnLogo,
-      name: "ACN",
-      description: "Agenzia per la Cybersicurezza Nazionale (Italie)",
-      color: "#6639B7"
-    },
-    {
-      logo: hipaaLogo,
-      name: "HIPAA",
-      description: "Health Insurance Portability and Accountability Act (USA)",
-      color: "#0085CA"
-    }
-  ];
-
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#5e2d91] to-[#CF0072] text-white px-6 py-3 rounded-full mb-6">
-            <Shield className="w-5 h-5" />
-            <span className="font-semibold">Sécurité & Souveraineté</span>
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-3 bg-purple-50 text-[#5e2d91] px-6 py-2 rounded-full mb-6">
+            <Shield className="w-4 h-4" />
+            <span className="font-bold text-xs tracking-widest uppercase">Sécurité & Souveraineté</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 !text-[#000000]">Vos données, protégées & hébergées en France.          </h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 tracking-tight">Vos données, protégées & hébergées en France.</h2>
           
-          
-          
-          <p className="text-base max-w-3xl mx-auto !text-[#000000]">Rainbow est une solution française, hébergée dans des centres de données situés en Europe, respectant les normes les plus strictes en matière de sécurité, de souveraineté et de confidentialité.​</p>
-        </motion.div>
-
-        {/* Certifications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {certifications.map((cert, index) => {
-            return (
-              <motion.div
-                key={index}
-                className="group bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-gray-100 hover:border-gray-200"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 * index }}
-              >
-                {/* Icon */}
-                <div 
-                  className="w-16 h-16 rounded-xl flex items-center justify-center mb-6 transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundColor: `${cert.color}20` }}
-                >
-                  <img 
-                    src={cert.logo}
-                    alt={cert.name}
-                    className="w-20 h-20 object-contain"
-                  />
-                </div>
-                
-                {/* Content */}
-                <h3 
-                  className="text-2xl font-bold mb-3"
-                  style={{ color: cert.color }}
-                >
-                  {cert.name}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {cert.description}
-                </p>
-              </motion.div>
-            );
-          })}
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Rainbow respecte les normes les plus strictes en matière de sécurité, de souveraineté et de confidentialité.​
+          </p>
         </div>
 
-        {/* Bottom Features */}
-        <motion.div
-          className="mt-16 flex flex-wrap justify-center items-center gap-8 text-gray-600"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-[#5e2d91] rounded-full"></span>
-            <span className="font-medium">🇫🇷 Solution Française</span>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-[#34B233] rounded-full"></span>
-            <span className="font-medium">Hébergement 100% Européen</span>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 bg-[#0085CA] rounded-full"></span>
-            <span className="font-medium">Non soumis au Cloud Act</span>
-          </div>
-        </motion.div>
+        {/* Polished Table-Style Layout */}
+        <div className="max-w-5xl mx-auto border-[0.5px] border-gray-300 overflow-hidden bg-white shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-4">
+            {/* Rainbow Logo Cell - Spans both rows in desktop */}
+            <div className="md:col-span-1 border-b md:border-b-0 md:border-r-[0.5px] border-gray-300 flex items-center justify-center p-12 bg-white">
+              <img 
+                src={rainbowLogo} 
+                alt="Rainbow" 
+                className="w-32 md:w-40 h-auto object-contain"
+              />
+            </div>
 
-        {/* CTA Link */}
-        <motion.div
-          className="text-center mt-10"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-        >
+            {/* Certifications Grid Part */}
+            <div className="md:col-span-3 grid grid-cols-2 lg:grid-cols-3">
+              {/* Row 1 */}
+              <div className="border-b-[0.5px] border-r-[0.5px] border-gray-300 p-8 flex items-center justify-center group hover:bg-gray-50 transition-colors">
+                <img src={acnLogo} alt="ACN" className="h-20 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <div className="border-b-[0.5px] border-r-[0.5px] border-gray-300 p-8 flex items-center justify-center group hover:bg-gray-50 transition-colors">
+                <img src={hipaaLogo} alt="HIPAA" className="h-20 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <div className="border-b-[0.5px] border-gray-300 p-8 flex items-center justify-center group hover:bg-gray-50 transition-colors">
+                <img src={rgpdLogo} alt="GDPR" className="h-20 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+              </div>
+
+              {/* Row 2 */}
+              <div className="border-r-[0.5px] border-gray-300 p-8 flex items-center justify-center group hover:bg-gray-50 transition-colors">
+                <img src={anssiLogo} alt="ANSSI" className="h-20 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <div className="border-r-[0.5px] border-gray-300 p-8 flex items-center justify-center group hover:bg-gray-50 transition-colors">
+                <img src={isoLogo} alt="ISO 27001" className="h-20 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <div className="p-8 flex items-center justify-center group hover:bg-gray-50 transition-colors">
+                <img src={ensLogo} alt="ENS" className="h-20 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Trust Pills */}
+        <div className="mt-20 flex flex-wrap justify-center gap-4">
+          <span className="px-5 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm font-bold text-gray-700 flex items-center gap-2">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            Solution Française
+          </span>
+          <span className="px-5 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm font-bold text-gray-700 flex items-center gap-2">
+            <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+            Hébergement Européen
+          </span>
+          <span className="px-5 py-2.5 bg-gray-50 border border-gray-200 rounded-full text-sm font-bold text-gray-700 flex items-center gap-2">
+            <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+            Non soumis au Cloud Act
+          </span>
+        </div>
+
+        <div className="text-center mt-12">
           <a
             href="/security"
-            className="inline-flex items-center gap-2 text-[#5e2d91] hover:text-[#CF0072] font-semibold transition-colors group"
+            className="text-[#5e2d91] font-bold hover:underline transition-all group"
           >
-            Voir toutes les certifications
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            En savoir plus sur notre engagement sécurité 
+            <span className="ml-2 transition-transform group-hover:translate-x-1 inline-block">→</span>
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
