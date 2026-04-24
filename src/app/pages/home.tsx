@@ -15,7 +15,6 @@ import { StripeCheckout } from "../components/stripe-checkout";
 import { ProductRangeSection } from "../components/product-range-section";
 import { DiagonalGradientBackground } from "../components/diagonal-gradient-background";
 import { SecurityCertificationsSection } from "../components/security-certifications-section";
-import { ComplianceSection } from "../components/compliance-section";
 import { TargetAudienceSection } from "../components/target-audience-section";
 import { analyticsTracker } from "../services/analytics-tracker";
 import { SectionDivider } from "../components/section-divider";
@@ -127,14 +126,8 @@ export default function Home() {
         {/* Security Certifications Section - gray-50 */}
         <SecurityCertificationsSection />
 
-        {/* gray-50 → #ECEEF6 */}
-        <SectionDivider fromColor="#f9fafb" toColor="#ECEEF6" />
-
-        {/* Compliance Section */}
-        <ComplianceSection />
-
-        {/* #ECEEF6 → white */}
-        <SectionDivider fromColor="#ECEEF6" toColor="#ffffff" />
+        {/* gray-50 → white */}
+        <SectionDivider fromColor="#f9fafb" toColor="#ffffff" />
 
         {/* Product Range Section - white */}
         <ProductRangeSection />

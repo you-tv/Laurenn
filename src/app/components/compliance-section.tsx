@@ -21,13 +21,6 @@ interface CardData {
 
 const cards: CardData[] = [
   {
-    id: "card-why-rainbow",
-    logo: rainbowLogo,
-    title: "Pourquoi RAINBOW Webinar ?",
-    body: "Une plateforme sécurisée, fiable et conforme, conçue pour protéger vos données et soutenir vos recherches en toute confiance.",
-    hasWaves: true
-  },
-  {
     id: "card-hipaa",
     logo: hipaaLogo,
     title: "HIPAA",
@@ -62,7 +55,7 @@ const cards: CardData[] = [
     id: "card-bsi-c5",
     logo: bsiLogo,
     title: "BSI C5",
-    body: "Certification based on the BSI C5 standard for cloud security, ensuring the protection and availability of your data in the cloud.",
+    body: "Certification based on the BSI C5 standard for cloud security, ensuring the protection and availability of your data.",
     hasDots: true,
     hasBlob: true
   },
@@ -83,36 +76,34 @@ export function ComplianceSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a1a2e] mb-4">
-            Pourquoi RAINBOW Webinar ?
+            Sécurité & Conformité
           </h2>
           <p className="text-lg text-[#666882] max-w-2xl mx-auto">
             Une plateforme sécurisée, souveraine et conforme aux normes les plus exigeantes.
           </p>
         </div>
         
-        {/* Unified Staggered Grid - 10 Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-10 gap-[16px]">
-          {/* Card 1 - Rainbow (Spans 4 columns and 2 rows) */}
-          <div className="lg:col-span-4 lg:row-span-2 h-full">
-            <ComplianceCard card={cards[0]} isFirst={true} isFullHeight={true} />
+        {/* Unified Staggered Grid - 12 Column Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-[16px]">
+          {/* Row 1 - 4-5-3 span */}
+          <div className="md:col-span-4">
+            <ComplianceCard card={cards[0]} isFirst={false} />
           </div>
-
-          {/* Row 1 - Cards 2, 3, 4 (2 columns each) */}
-          <div className="lg:col-span-2">
+          <div className="md:col-span-5">
             <ComplianceCard card={cards[1]} isFirst={false} />
           </div>
-          <div className="lg:col-span-2">
+          <div className="md:col-span-3">
             <ComplianceCard card={cards[2]} isFirst={false} />
           </div>
-          <div className="lg:col-span-2">
+
+          {/* Row 2 - 5-3-4 span */}
+          <div className="md:col-span-5">
             <ComplianceCard card={cards[3]} isFirst={false} />
           </div>
-
-          {/* Row 2 - Cards 5, 6 (3 columns each) */}
-          <div className="lg:col-span-3">
+          <div className="md:col-span-3">
             <ComplianceCard card={cards[4]} isFirst={false} />
           </div>
-          <div className="lg:col-span-3">
+          <div className="md:col-span-4">
             <ComplianceCard card={cards[5]} isFirst={false} />
           </div>
         </div>
@@ -122,27 +113,27 @@ export function ComplianceSection() {
   );
 }
 
-function ComplianceCard({ card, isFirst, isFullHeight }: { card: CardData, isFirst: boolean, isFullHeight?: boolean }) {
+function ComplianceCard({ card, isFirst }: { card: CardData, isFirst: boolean }) {
   return (
-    <div className={`bg-white rounded-[20px] p-[36px_36px_30px] ${isFullHeight ? 'h-full flex flex-col justify-between' : 'min-h-[280px] flex flex-col'} relative overflow-hidden shadow-[0_2px_12px_rgba(80,70,160,0.06)] group transition-transform hover:-translate-y-1 duration-300`}>
+    <div className="bg-white rounded-[20px] p-[36px_36px_30px] h-full flex flex-col relative overflow-hidden shadow-[0_2px_12px_rgba(80,70,160,0.06)] group transition-transform hover:-translate-y-1 duration-300">
       
       <div className="z-10 relative flex-1 flex flex-col">
         {/* Logo Area */}
-        <div className={`${isFullHeight ? 'h-[120px] mb-[24px]' : 'h-[80px] mb-[12px]'} flex items-start`}>
+        <div className="h-[80px] mb-[12px] flex items-start">
           <img 
             src={card.logo} 
             alt={card.title} 
-            className={`${isFullHeight ? 'max-h-[80px] max-w-[160px]' : 'max-h-[60px] max-w-[120px]'} object-contain`}
+            className="max-h-[60px] max-w-[120px] object-contain"
           />
         </div>
 
         {/* Title */}
-        <h3 className={`font-[800] text-[#1a1a2e] mb-[12px] ${isFullHeight ? 'text-[32px] leading-tight' : isFirst ? 'text-[28px]' : 'text-[20px]'}`}>
+        <h3 className={`font-[800] text-[#1a1a2e] mb-[12px] ${isFirst ? 'text-[28px]' : 'text-[20px]'}`}>
           {card.title}
         </h3>
 
         {/* Body */}
-        <p className={`${isFullHeight ? 'text-[16px]' : 'text-[14px]'} leading-[1.65] text-[#666882] pb-[40px]`}>
+        <p className="text-[14px] leading-[1.65] text-[#666882] pb-[40px]">
           {card.body}
         </p>
       </div>

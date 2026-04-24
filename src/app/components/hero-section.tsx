@@ -31,7 +31,7 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
   const { t } = useLanguage();
 
   return (
-    <section className="relative flex flex-col items-center justify-center bg-white overflow-hidden pt-24 pb-0">
+    <section className="relative flex flex-col items-center justify-center bg-white overflow-hidden pt-24">
       {/* ── Text content ── */}
       <div className="max-w-6xl mx-auto text-center px-4 z-10 relative">
 
@@ -117,32 +117,48 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
       </div>
 
       {/* ── Image with gray curved stage ── */}
-      <div className="relative w-full">
+      <div className="relative w-full mt-10">
 
         {/* Gray convex arch SVG — sits behind the image */}
         <div
           aria-hidden="true"
           className="absolute inset-x-0 top-0 z-0 pointer-events-none"
-          style={{ height: "clamp(212px, 66vw, 186px)" }}
+          style={{ height: "clamp(160px, 12vw, 220px)" }}
         >
           <svg
             viewBox="0 0 1440 120"
             preserveAspectRatio="none"
             className="w-full h-full block"
-          >
+          >            <defs>
+              <linearGradient id="rainbow-strip" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#34B233" />
+                <stop offset="25%" stopColor="#0085CA" />
+                <stop offset="50%" stopColor="#5e2d91" />
+                <stop offset="75%" stopColor="#CF0072" />
+                <stop offset="100%" stopColor="#FF4500" />
+              </linearGradient>
+            </defs>
             <path d="M0,120 C480,0 960,0 1440,120 L1440,120 L0,120 Z" fill="#f9fafb" />
+            <path 
+              d="M0,120 C480,0 960,0 1440,120" 
+              fill="none" 
+              stroke="url(#rainbow-strip)" 
+              strokeWidth="4" 
+              strokeLinecap="round"
+            />
           </svg>
         </div>
 
         {/* Gray fill below arch — extends to bottom of section */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[#f9fafb] z-0"
-          style={{ top: "clamp(211px, 66vw, 186px)" }}
+          className="absolute inset-x-0 bottom-0 bg-[#f9fafb] z-0"
+          style={{ top: "clamp(159px, 12vw, 219px)" }}
         />
 
+        {/* Image — z-10, sits on top of the gray stage */}
         <motion.div
-          className="relative z-10 max-w-5xl mx-auto px-4 pb-20 md:pb-32"
+          className="relative z-10 max-w-5xl mx-auto px-4 pb-20 md:pb-28"
           initial={{ opacity: 0, y: 28, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
@@ -162,7 +178,7 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
               draggable={false}
             />
             {/* Play overlay */}
-            <div className="absolute inset-0 bg-gray-900/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300  ">
+            <div className="absolute inset-0 bg-gray-900/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="bg-white/95 backdrop-blur-sm rounded-full p-6 shadow-2xl flex items-center justify-center transform scale-90 group-hover:scale-100 transition-all duration-300">
                 <Play className="h-10 w-10 text-[#5e2d91] fill-[#5e2d91] ml-1" />
               </div>
