@@ -49,7 +49,7 @@ export function TargetAudienceSection() {
   const currentAudience = audiences[activeTab];
 
   return (
-    <section className="py-24 lg:py-32 bg-white border-t border-gray-100">
+    <section className="py-24 lg:py-32 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -63,18 +63,17 @@ export function TargetAudienceSection() {
 
         {/* Tab Switcher - Clean & Minimalist */}
         <div className="flex justify-center mb-16">
-          <div className="inline-flex p-1 bg-gray-100/80 rounded-2xl border border-gray-200/50">
+          <div className="inline-flex p-1 bg-white rounded-2xl border border-gray-200/50 shadow-sm">
             {audiences.map((audience, index) => {
               const isActive = activeTab === index;
               return (
                 <button
                   key={index}
                   onClick={() => setActiveTab(index)}
-                  className={`flex items-center gap-2 px-4 md:px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
-                    isActive
-                      ? 'bg-white text-gray-900 shadow-sm border border-gray-200/50'
-                      : 'text-gray-500 hover:text-gray-900'
-                  }`}
+                  className={`flex items-center gap-2 px-4 md:px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${isActive
+                      ? 'bg-gray-100 text-gray-900 shadow-sm border border-gray-200/50'
+                      : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                    }`}
                 >
                   <audience.icon className={`w-4 h-4 transition-colors ${isActive ? '' : 'text-gray-400'}`} style={isActive ? { color: audience.color } : {}} />
                   <span className="hidden sm:inline">{audience.title}</span>
@@ -97,18 +96,18 @@ export function TargetAudienceSection() {
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
               >
-                <div 
+                <div
                   className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-bold mb-6"
                   style={{ backgroundColor: `${currentAudience.color}10`, color: currentAudience.color }}
                 >
                   <currentAudience.icon className="w-4 h-4" />
                   {currentAudience.title}
                 </div>
-                
+
                 <h3 className="text-3xl md:text-4xl font-extrabold mb-6 text-gray-900 leading-tight">
                   {currentAudience.highlight}
                 </h3>
-                
+
                 <p className="text-lg text-gray-600 mb-10 leading-relaxed">
                   {currentAudience.description}
                 </p>
@@ -135,10 +134,10 @@ export function TargetAudienceSection() {
 
           {/* Image (Right) */}
           <div className="order-1 lg:order-2">
-            <div className="relative rounded-3xl overflow-hidden bg-gray-50 border border-gray-200 shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden bg-white border border-gray-200 shadow-xl">
               {/* Subtle glass effect frame decoration */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent z-10" />
-              
+
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}

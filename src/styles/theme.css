@@ -189,6 +189,154 @@
   }
 }
 
+/* CTA Banner Component Styles */
+.sp-preview {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #11061e;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.sp-cta-banner {
+  padding: 4rem 6rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sp-cta-banner-dark {
+  background-color: #170926;
+  background-image: 
+    radial-gradient(ellipse at top left, rgba(124, 58, 173, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse at bottom right, rgba(94, 45, 145, 0.2) 0%, transparent 80%);
+}
+
+.sp-cta-banner-dark::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Sophisticated mouse tracking glow */
+  background: radial-gradient(circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(168, 85, 247, 0.12) 0%, transparent 100%);
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.sp-cta-banner-dark::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sp-cta-h2 {
+  font-size: 2.5rem;
+  line-height: 1.15;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (min-width: 768px) {
+  .sp-cta-h2 {
+    font-size: 4rem;
+  }
+}
+
+.sp-cta-sub {
+  font-size: 1.125rem;
+  color: #e9d5ff;
+  max-width: 38rem;
+  margin: 0 auto 3rem;
+  position: relative;
+  z-index: 2;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.sp-cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 640px) {
+  .sp-cta-actions {
+    flex-direction: row;
+  }
+}
+
+.sp-cta-note {
+  margin-top: 3rem;
+  font-size: 0.875rem;
+  color: rgba(233, 213, 255, 0.6);
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+  letter-spacing: 0.02em;
+}
+
+/* Button System */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2.25rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn.lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+.btn-brand {
+  background-color: #ffffff;
+  color: #5e2d91;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.btn-brand:hover {
+  background-color: #f3f4f6;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
 /* Hero Shuffling Text Animation */
 .hero-word-loader {
   display: inline-flex;

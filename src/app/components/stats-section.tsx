@@ -46,22 +46,7 @@ export function StatsSection() {
   ];
 
   return (
-    <section className="relative bg-[#4a2373] text-white pb-24 lg:pb-32 mt-24 md:mt-40">
-      {/* Curved Divider at the top - Bulging Upwards */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden -translate-y-[99%] pointer-events-none">
-        <svg 
-          viewBox="0 0 1440 160" 
-          preserveAspectRatio="none" 
-          className="w-full h-[80px] sm:h-[120px] md:h-[160px] lg:h-[200px]"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            fill="#4a2373" 
-            d="M0,160 C480,0 960,0 1440,160 V160 H0 Z"
-          />
-        </svg>
-      </div>
-
+    <section className="relative bg-[#5e2d91] text-white py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
         <div className="text-center mb-20 md:mb-32">
@@ -70,7 +55,7 @@ export function StatsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto"
+            className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto text-white"
           >
             Nous sommes là pour faire grandir votre entreprise
           </motion.h2>
@@ -100,7 +85,7 @@ export function StatsSection() {
         </div>
       </div>
 
-      {/* Subtle background decoration - contained in overflow-hidden box to avoid bleed */}
+      {/* Subtle background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#6b21a8] rounded-full blur-[160px] opacity-20" />
       </div>

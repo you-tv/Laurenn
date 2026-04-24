@@ -15,8 +15,10 @@ import { StripeCheckout } from "../components/stripe-checkout";
 import { ProductRangeSection } from "../components/product-range-section";
 import { DiagonalGradientBackground } from "../components/diagonal-gradient-background";
 import { SecurityCertificationsSection } from "../components/security-certifications-section";
+import { ComplianceSection } from "../components/compliance-section";
 import { TargetAudienceSection } from "../components/target-audience-section";
 import { analyticsTracker } from "../services/analytics-tracker";
+import { SectionDivider } from "../components/section-divider";
 import ctaBackground from "figma:asset/cta_bg.jpg";
 import pageBackground from "figma:asset/page_bg.png";
 
@@ -51,6 +53,18 @@ export default function Home() {
 
   const handleViewDemo = () => {
     setDemoModalOpen(true);
+  };
+
+  const handleViewVideo = () => {
+    setDemoModalOpen(true);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+    e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
   };
 
   const handleSelectPlan = (planName: string) => {
@@ -95,53 +109,74 @@ export default function Home() {
         <HeroSection 
           onStartTrial={handleStartTrial}
           onViewDemo={handleViewDemo}
+          onViewVideo={handleViewVideo}
         />
-        
-        {/* Unified Platform Section - Communication Hub */}
+
+        {/* Unified Platform Section - white */}
         <UnifiedPlatformSection />
-        
-        {/* Target Audience Section - Who is Rainbow for? */}
+
+        {/* Target Audience Section - gray-50 */}
         <TargetAudienceSection />
-        
-        {/* Stats Section - Key Metrics */}
+
+        {/* gray-50 → purple */}
+        <SectionDivider fromColor="#f9fafb" toColor="#5e2d91" />
+
+        {/* Stats Section - purple */}
         <StatsSection />
-        
-        {/* Security Certifications Section - Compliance & Trust */}
+
+        {/* Security Certifications Section - gray-50 */}
         <SecurityCertificationsSection />
-        
-        {/* Product Range Section - Explore Products */}
+
+        {/* gray-50 → #ECEEF6 */}
+        <SectionDivider fromColor="#f9fafb" toColor="#ECEEF6" />
+
+        {/* Compliance Section */}
+        <ComplianceSection />
+
+        {/* #ECEEF6 → white */}
+        <SectionDivider fromColor="#ECEEF6" toColor="#ffffff" />
+
+        {/* Product Range Section - white */}
         <ProductRangeSection />
-        
+
+        {/* white → gray-50 */}
+        <SectionDivider fromColor="#ffffff" toColor="#f9fafb" />
+
+        {/* Testimonials Section - gray-50 */}
+        <TestimonialsSection onViewDemo={handleViewDemo} />
+
+        {/* gray-50 → white */}
+        <SectionDivider fromColor="#f9fafb" toColor="#ffffff" />
+
+        {/* FAQ Section - white */}
+        <FAQSection />
+
         {/* CTA Section - Call to Action */}
-        <section className="py-24 bg-white border-t border-gray-200">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl px-8 py-16 text-center bg-[#5e2d91]">
-              <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">Prêt à transformer vos communications ?</h2>
-              <p className="text-xl text-[#e9d5ff] mb-10 max-w-2xl mx-auto">Essayez Rainbow gratuitement pendant 30 jours, sans carte bancaire ni engagement.</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  to="/pricing"
-                  className="inline-block px-8 py-4 bg-white text-[#5e2d91] rounded-md font-bold hover:bg-gray-100 transition-colors shadow-sm"
-                >
-                  Commencer l'essai gratuit
-                </Link>
-                <a
-                  href="https://app.storylane.io/share/your-demo-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block px-8 py-4 bg-[#4a2373] text-white rounded-md font-bold hover:bg-[#3d1c5d] transition-colors border border-[#4a2373]"
-                >
-                  Voir une démo
-                </a>
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="sp-preview">
+              <div 
+                className="sp-cta-banner sp-cta-banner-dark"
+                onMouseMove={handleMouseMove}
+              >
+                <h2 className="sp-cta-h2">Ready to transform your<br />team communication?</h2>
+                <p className="sp-cta-sub">Join 10,000+ organizations using Rainbow to connect, collaborate, and grow. No credit card required.</p>
+                <div className="sp-cta-actions">
+                  <button 
+                    onClick={handleStartTrial}
+                    className="btn btn-brand lg"
+                  >
+                    Start Free Trial →
+                  </button>
+                  <button className="btn btn-secondary lg">
+                    Contact Sales
+                  </button>
+                </div>
+                <div className="sp-cta-note">14-day free trial · No credit card · Full feature access</div>
               </div>
             </div>
           </div>
         </section>
-        
-        {/* Testimonials Section - Customer Feedback */}
-        <TestimonialsSection onViewDemo={handleViewDemo} />
-        
-        <FAQSection />
       </main>
 
       <Footer />

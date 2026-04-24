@@ -16,26 +16,26 @@ export function UnifiedPlatformSection() {
     {
       title: "Collaborer efficacement",
       description: "Travailler ensemble en temps réel grâce aux espaces partagés, chat et fichiers centralisés. Tout ce dont votre équipe a besoin pour avancer ensemble.",
+      quote: "« Rainbow a transformé la façon dont nos équipes synchronisent leurs projets au quotidien. »",
+      author: "Directeur Technique, Innova",
       color: "#0085CA",
       image: collaborateImage
     },
     {
       title: "Communiquer simplement",
       description: "Voix, visio, messages instantanés : tout est réuni dans une seule interface pour fluidifier les échanges et gagner un temps précieux.",
+      quote: "« La simplicité de l'interface nous a permis d'adopter l'outil en moins d'une semaine. »",
+      author: "Responsable Opérations, Flux",
       color: "#34B233",
       image: communicateImage
     },
     {
       title: "Créer des événements impactants",
       description: "Organisez des webinars, des conférences et des démos produits professionnels pour toucher votre audience et renforcer votre image de marque.",
+      quote: "« Nos webinaires n'ont jamais été aussi professionnels et engageants. »",
+      author: "Directrice Marketing, Zenith",
       color: "#FF4500",
       image: eventsImage
-    },
-    {
-      title: "Analyser et performer",
-      description: "Suivez les interactions, qualifiez vos leads et analysez vos performances pour transformer vos communications en résultats concrets.",
-      color: "#CF0072",
-      image: analyticsImage
     }
   ];
 
@@ -46,7 +46,7 @@ export function UnifiedPlatformSection() {
     const timer = setTimeout(() => {
       setActiveIndex((prev) => (prev + 1) % pillars.length);
       setProgressKey(prev => prev + 1);
-    }, 5000); // 5 seconds per tab
+    }, 6000); // 6 seconds per tab
     
     return () => clearTimeout(timer);
   }, [activeIndex, pillars.length, isAutoPlaying]);
@@ -60,7 +60,7 @@ export function UnifiedPlatformSection() {
   };
 
   return (
-    <section className="py-24 lg:py-32 bg-[#FAFAFA] relative overflow-hidden">
+    <section className="pb-24 lg:pb-32 bg-[#f9fafb] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
@@ -78,80 +78,96 @@ export function UnifiedPlatformSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
           
           {/* Tabs Navigation (Left) - Accordion Style */}
-          <div className="order-2 lg:order-1 lg:col-span-5 flex flex-col justify-center space-y-2">
-            {pillars.map((pillar, index) => {
-              const isActive = activeIndex === index;
-              
-              return (
-                <div
-                  key={index}
-                  onClick={() => handleManualClick(index)}
-                  className="relative pl-8 py-5 cursor-pointer group"
-                >
-                  {/* Background track line */}
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gray-200 rounded-full opacity-60 group-hover:opacity-100 transition-opacity" />
-                  
-                  {/* Active Animated Progress line */}
-                  {isActive && (
-                    <motion.div 
-                      className="absolute left-0 top-0 w-1.5 -ml-[1px] rounded-full"
-                      style={{ backgroundColor: pillar.color }}
-                      initial={{ height: isAutoPlaying ? 0 : "100%" }}
-                      animate={{ height: "100%" }}
-                      transition={{ duration: isAutoPlaying ? 5 : 0.3, ease: "linear" }}
-                      key={`progress-${progressKey}-${index}`}
-                    />
-                  )}
-                  
-                  {/* Title */}
-                  <h3 
-                    className={`font-semibold tracking-tight transition-colors duration-300 ${
-                      isActive 
-                        ? 'text-2xl md:text-3xl' 
-                        : 'text-xl text-gray-400 group-hover:text-gray-700'
-                    }`}
-                    style={isActive ? { color: pillar.color } : {}}
+          <div className="order-2 lg:order-1 lg:col-span-5 flex flex-col justify-center">
+            <div className="space-y-4 mb-12">
+              {pillars.map((pillar, index) => {
+                const isActive = activeIndex === index;
+                
+                return (
+                  <div
+                    key={index}
+                    onClick={() => handleManualClick(index)}
+                    className="relative pl-6 py-4 cursor-pointer group"
                   >
-                    {pillar.title}
-                  </h3>
-                  
-                  {/* Accordion Description */}
-                  <AnimatePresence initial={false}>
+                    {/* Background track line - Smaller and more subtle */}
+                    <div className="absolute left-0 top-2 bottom-2 w-[2px] bg-gray-200 rounded-full opacity-40 group-hover:opacity-100 transition-opacity" />
+                    
+                    {/* Active Animated Progress line - Smaller thickness */}
                     {isActive && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-gray-600 leading-relaxed text-lg pt-3 pb-1">
-                          {pillar.description}
-                        </p>
-                        <div className="pt-2 flex items-center text-sm font-medium transition-colors" style={{ color: pillar.color }}>
-                          <span className="hover:underline cursor-pointer">En savoir plus</span>
-                          <span className="ml-1 opacity-70">→</span>
-                        </div>
-                      </motion.div>
+                      <motion.div 
+                        className="absolute left-0 top-2 w-[2px] rounded-full"
+                        style={{ backgroundColor: pillar.color }}
+                        initial={{ height: isAutoPlaying ? 0 : "100%" }}
+                        animate={{ height: "calc(100% - 16px)" }}
+                        transition={{ duration: isAutoPlaying ? 6 : 0.3, ease: "linear" }}
+                        key={`progress-${progressKey}-${index}`}
+                      />
                     )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
+                    
+                    {/* Title */}
+                    <h3 
+                      className={`font-bold tracking-tight transition-all duration-300 ${
+                        isActive 
+                          ? 'text-xl md:text-2xl' 
+                          : 'text-lg text-gray-400 group-hover:text-gray-600'
+                      }`}
+                      style={isActive ? { color: pillar.color } : {}}
+                    >
+                      {pillar.title}
+                    </h3>
+                    
+                    {/* Accordion Description */}
+                    <AnimatePresence initial={false}>
+                      {isActive && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-gray-600 leading-relaxed text-base pt-3 pb-4">
+                            {pillar.description}
+                          </p>
+                          
+                          <div className="flex items-center text-sm font-bold transition-colors" style={{ color: pillar.color }}>
+                            <span className="hover:underline cursor-pointer">En savoir plus</span>
+                            <span className="ml-1 opacity-70">→</span>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Global Dynamic Quote Section (Bottom of list) */}
+            <div className="pt-8 border-t border-gray-100 relative">
+              <AnimatePresence mode="wait">
+                <motion.div 
+                  key={activeIndex}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4 }}
+                  className="pl-6 border-l-2"
+                  style={{ borderColor: pillars[activeIndex].color }}
+                >
+                  <p className="text-gray-600 italic text-lg mb-2 leading-relaxed">
+                    {pillars[activeIndex].quote}
+                  </p>
+                  <p className="text-xs font-bold uppercase tracking-widest text-gray-400">
+                    {pillars[activeIndex].author}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Image Display (Right) */}
           <div className="order-1 lg:order-2 lg:col-span-7">
             <div className="relative w-full aspect-[4/3] lg:aspect-[16/11] rounded-xl overflow-hidden bg-[#111111] shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-1 ring-black/5">
-              
-              {/* Browser-like window header */}
-              <div className="absolute top-0 left-0 right-0 h-10 bg-[#1e1e1e] border-b border-white/10 flex items-center px-4 z-20">
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-                </div>
-              </div>
 
               {/* Animated Image Container */}
               <div className="absolute inset-0 pt-10">

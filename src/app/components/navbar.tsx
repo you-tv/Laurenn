@@ -80,29 +80,29 @@ export function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-        <div className="flex justify-between items-center h-20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center -ml-2">
             <Link to="/" className="cursor-pointer hover:opacity-80 transition-opacity">
               <img 
                 src={rainbowLogo} 
                 alt="Rainbow" 
-                className="h-16 rounded-[10px]"
+                className="h-10 rounded-[8px]"
               />
             </Link>
           </div>
 
           {/* Desktop Navigation - Left Side (Promotional Links) */}
-          <div className="hidden md:flex items-center gap-8 flex-1 ml-12">
+          <div className="hidden md:flex items-center gap-8 flex-1 ml-12 justify-center">
             <Link to="/product">
-              <button className="text-gray-700 hover:text-[#ff6b35] transition-colors font-medium">
+              <button className="text-gray-600 hover:text-[#ff6b35] transition-colors font-medium text-sm">
                 {t.nav.product}
               </button>
             </Link>
             <Link to="/pricing">
-              <button className="text-gray-700 hover:text-[#ff6b35] transition-colors font-medium">
+              <button className="text-gray-600 hover:text-[#ff6b35] transition-colors font-medium text-sm">
                 {t.nav.pricing}
               </button>
             </Link>
@@ -112,7 +112,7 @@ export function Navbar() {
               onMouseEnter={() => setResourcesDropdownOpen(true)}
               onMouseLeave={() => setResourcesDropdownOpen(false)}
             >
-              <button className="text-gray-700 hover:text-[#ff6b35] transition-colors font-medium">
+              <button className="text-gray-600 hover:text-[#ff6b35] transition-colors font-medium text-sm">
                 {t.nav.resources}
               </button>
               
@@ -151,7 +151,7 @@ export function Navbar() {
               </AnimatePresence>
             </div>
             <Link to="/about">
-              <button className="text-gray-700 hover:text-[#ff6b35] transition-colors font-medium">
+              <button className="text-gray-600 hover:text-[#ff6b35] transition-colors font-medium text-sm">
                 {t.nav.about}
               </button>
             </Link>
@@ -175,7 +175,7 @@ export function Navbar() {
             </div>
             
             <Link to="/login">
-              <button className="text-gray-700 hover:text-[#5e2d91] transition-colors font-medium">
+              <button className="text-gray-600 hover:text-[#5e2d91] transition-colors font-medium text-sm">
                 {t.nav.signIn}
               </button>
             </Link>
