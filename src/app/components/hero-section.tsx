@@ -37,12 +37,17 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
 
         {/* Eyebrow */}
         <motion.p
-          className="text-sm md:text-base font-bold uppercase tracking-[0.15em] mb-6 bg-gradient-to-r from-[#5e2d91] to-[#CF0072] text-transparent bg-clip-text inline-block"
+          className="text-sm md:text-base font-bold uppercase tracking-[0.15em] mb-6 bg-gradient-to-r from-[#5e2d91] to-[#CF0072] text-transparent bg-clip-text inline-flex items-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          Souveraine. Moderne. Européenne. 🇪🇺
+          Souveraine. Moderne. Européenne.
+          <img 
+            src="https://flagcdn.com/w40/eu.png" 
+            alt="UE" 
+            className="inline-block w-5 h-auto ml-2 align-middle translate-y-[-1px]"
+          />
         </motion.p>
 
         <motion.h1
