@@ -5,7 +5,7 @@ import rainbowWebinarImage from "figma:asset/webinar_live.png";
 import rainbowWebinarLogo from "figma:asset/rainbow_webinar_logo.png";
 import rainbowCollaborationLogo from "figma:asset/rainbow_collaboration.png";
 
-import { Check, ArrowRight } from "lucide-react";
+import { Check } from "lucide-react";
 
 export function ProductRangeSection() {
   const { t } = useLanguage();
@@ -13,17 +13,16 @@ export function ProductRangeSection() {
   const products = [
     {
       id: 'webinar',
-      title: 'Rainbow Webinar',
+      titlePrefix: 'Rainbow',
+      titleHighlight: 'Webinar',
       subtitle: 'La solution souveraine pour vos événements digitaux',
-      logo: rainbowWebinarLogo,
       accentColor: '#ea5800',
       borderColor: 'border-[#ea5800]/20',
       bgColor: 'bg-[#ea5800]/5',
       tags: ['Live', 'Polls', 'Q&A'],
-      colorCode: '#ea5800',
       description: "Organisez des webinaires professionnels et engageants sans compromis sur la sécurité. Une plateforme conçue pour maximiser l'interaction avec votre audience.",
       features: [
-        "Jusqu'à 10 000 participants en simultané",
+        "Jusqu'à 1 000 participants en simultané",
         "Outils d'interactivité avancés (Sondages, Q&A)",
         "Analytiques détaillés et rapports d'engagement",
         "Enregistrement HD et replay sécurisé",
@@ -32,15 +31,14 @@ export function ProductRangeSection() {
       link: "/webinar"
     },
     {
-      id: 'business',
-      title: 'Rainbow Business',
+      id: 'collaboration',
+      titlePrefix: 'Rainbow',
+      titleHighlight: 'Collaboration',
       subtitle: 'Communications unifiées pour les entreprises modernes',
-      logo: rainbowCollaborationLogo,
-      accentColor: '#8a898a',
-      borderColor: 'border-[#8a898a]/20',
-      bgColor: 'bg-gray-50',
+      accentColor: '#16a96e',
+      borderColor: 'border-[#16a96e]/20',
+      bgColor: 'bg-[#16a96e]/5',
       tags: ['Chat', 'Video', 'Files'],
-      colorCode: '#8a898a',
       description: "Simplifiez la collaboration au sein de votre organisation avec une solution de communication tout-en-un, fluide et hautement sécurisée.",
       features: [
         "Messagerie d'équipe et canaux de discussion",
@@ -73,25 +71,10 @@ export function ProductRangeSection() {
           {products.map((product) => (
             <div
               key={product.id}
-              className={`flex flex-col relative p-10 md:p-14 rounded-[3rem] border ${product.borderColor} ${product.bgColor} transition-all duration-500 hover:shadow-2xl hover:shadow-black/5 group`}
+              className={`flex flex-col relative p-10 md:p-14 rounded-3xl border ${product.borderColor} ${product.bgColor} transition-all duration-500 hover:shadow-2xl hover:shadow-black/5 group`}
             >
-              {/* Color Code Badge */}
-              <div 
-                className="absolute top-10 right-10 px-4 py-1.5 rounded-full text-white text-xs font-mono font-bold shadow-md z-10"
-                style={{ backgroundColor: product.accentColor }}
-              >
-                {product.colorCode}
-              </div>
-
-              {/* Logo & Category */}
-              <div className="mb-10">
-                <div className="w-16 h-16 flex items-center justify-center rounded-2xl bg-white shadow-sm border border-gray-100 overflow-hidden mb-6 group-hover:scale-110 transition-transform duration-500">
-                  <img 
-                    src={product.logo} 
-                    alt={product.title} 
-                    className="w-12 h-12 object-contain"
-                  />
-                </div>
+              {/* Category Tags */}
+              <div className="mb-8">
                 <div className="flex flex-wrap gap-2">
                   {product.tags.map((tag) => (
                     <span
@@ -108,7 +91,7 @@ export function ProductRangeSection() {
               {/* Title & Subtitle */}
               <div className="mb-8">
                 <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
-                  {product.title}
+                  {product.titlePrefix} <span style={{ color: product.accentColor }}>{product.titleHighlight}</span>
                 </h3>
                 <p className="text-[#5e2d91] font-bold text-lg mb-6">
                   {product.subtitle}
@@ -140,7 +123,7 @@ export function ProductRangeSection() {
               <div>
                 <a
                   href={product.link}
-                  className="w-full py-5 rounded-2xl font-extrabold text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95"
+                  className="w-full py-5 rounded-[10px] font-extrabold text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95"
                   style={{ 
                     backgroundColor: product.accentColor,
                     color: '#fff'

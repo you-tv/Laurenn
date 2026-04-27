@@ -19,7 +19,7 @@ export function TestimonialsSection({ onViewDemo }: { onViewDemo?: () => void })
         }}
         className="max-w-7xl px-4 sm:px-6 lg:px-8 z-10 mx-auto"
       >
-        <div className="flex flex-col items-center justify-center max-w-3xl mx-auto mb-4">
+        <div className="flex flex-col items-center justify-center max-w-4xl mx-auto mb-4">
           <div className="flex justify-center">
             <div className="border border-purple-200 py-1 px-4 rounded-full text-xs font-bold tracking-widest uppercase text-[#5e2d91] bg-purple-100/50 transition-colors mb-6">
               Usage
@@ -27,8 +27,8 @@ export function TestimonialsSection({ onViewDemo }: { onViewDemo?: () => void })
           </div>
 
           <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-extrabold tracking-tight text-center text-gray-900 transition-colors">
-            <span className="text-[#5e2d91]">Ils ont transformé leur quotidien avec</span><br/>
-            Rainbow Webinar
+            Ils ont transformé leur quotidien avec <br/>
+            <span className="text-[#5e2d91]">Rainbow Webinar</span>
           </h2>
           <p className="text-center mt-6 text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto transition-colors">
             Découvrez comment nos clients utilisent la puissance de Rainbow pour leurs événements les plus critiques.

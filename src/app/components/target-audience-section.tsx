@@ -13,20 +13,12 @@ export function TargetAudienceSection() {
 
   const audiences = [
     {
-      icon: GraduationCap,
-      title: "Enseignants & formateurs",
-      description: "Invitez vos élèves dans une salle de classe virtuelle. Vous y trouverez tous les outils pour enseigner efficacement et évaluer les acquis en temps réel.",
-      highlight: "Transmettez votre savoir sans frontières",
-      image: teachersImage,
-      color: "#5e2d91"
-    },
-    {
       icon: TrendingUp,
       title: "Marketeurs & commerciaux",
-      description: "Organisez des webinars d'exception pour générer des leads qualifiés. Interagissez avec votre audience et convertissez vos prospects en clients.",
-      highlight: "Boostez votre croissance par l'engagement",
+      description: "Accélérez vos échanges et gagnez en réactivité. Rainbow vous permet de coordonner vos campagnes et vos actions de vente en un clin d'œil.",
+      highlight: "Accélérez vos échanges et gagnez en réactivité",
       image: marketersImage,
-      color: "#34B233"
+      color: "#ea5800"
     },
     {
       icon: Building2,
@@ -37,12 +29,20 @@ export function TargetAudienceSection() {
       color: "#0085CA"
     },
     {
+      icon: GraduationCap,
+      title: "Enseignants & formateurs",
+      description: "Invitez vos élèves dans une salle de classe virtuelle. Vous y trouverez tous les outils pour enseigner efficacement et évaluer les acquis en temps réel.",
+      highlight: "Transmettez votre savoir sans frontières",
+      image: teachersImage,
+      color: "#5e2d91"
+    },
+    {
       icon: Users,
       title: "Managers & consultants",
-      description: "Gérez vos projets et animez vos équipes hybrides. Des espaces de travail partagés pour une productivité optimale.",
-      highlight: "Fédérez vos équipes autour de vos projets",
+      description: "Optimisez la prise de décision et la coordination d’équipes grâce à une communication fluide et sécurisée.",
+      highlight: "Optimisez la coordination de vos équipes",
       image: managersImage,
-      color: "#CF0072"
+      color: "#16a96e"
     }
   ];
 
@@ -56,7 +56,7 @@ export function TargetAudienceSection() {
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 tracking-tight">
             À qui s'adresse <span className="text-[#5e2d91]">Rainbow</span> ?
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="text-xl text-gray-600 leading-relaxed font-medium">
             Une solution flexible conçue pour répondre aux défis spécifiques de votre secteur d'activité.
           </p>
         </div>
@@ -115,7 +115,7 @@ export function TargetAudienceSection() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button
                     size="lg"
-                    className="bg-[#5e2d91] hover:bg-[#4a2373] text-white px-8 py-6 text-lg font-bold rounded-xl transition-all shadow-md hover:shadow-lg"
+                    className="bg-[#5e2d91] hover:bg-[#4a2373] text-white px-8 py-6 text-lg font-bold rounded-[10px] transition-all shadow-md hover:shadow-lg"
                     onClick={() => window.open("https://app.storylane.io/share/njaxojcgqihp", "_blank")}
                   >
                     Testez-le gratuitement
@@ -123,7 +123,7 @@ export function TargetAudienceSection() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-2 border-gray-200 text-gray-900 hover:bg-gray-50 px-8 py-6 text-lg font-bold rounded-xl"
+                    className="border-2 border-gray-200 text-gray-900 hover:bg-gray-50 px-8 py-6 text-lg font-bold rounded-[10px]"
                   >
                     Découvrir l'usage
                   </Button>

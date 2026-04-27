@@ -42,12 +42,12 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          Souveraine. Moderne. Française. 🇫🇷
+          Souveraine. Moderne. Européenne. 🇪🇺
         </motion.p>
 
         {/* Main Title */}
         <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-[3.5rem] font-extrabold tracking-[-0.04em] leading-[1.05] mb-8 text-gray-900"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-[4rem] font-extrabold tracking-[-0.04em] leading-[1.1] mb-8 text-gray-900"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
@@ -59,56 +59,65 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
               <span className="hero-word text-[#5e2d91]">réunions</span>
               <span className="hero-word text-[#5e2d91]">webinaires</span>
               <span className="hero-word text-[#5e2d91]">conférences</span>
-              <span className="hero-word text-[#5e2d91]">échanges</span>
               <span className="hero-word text-[#5e2d91]">réunions</span>
             </span>
           </span>
           {" "}réussis.
         </motion.h1>
 
+        {/* Description */}
+        <motion.p
+          className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed font-medium"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+        >
+          Messagerie, appels, partage de fichiers, visioconférences : tout ce dont vos équipes ont besoin, en un seul outil.
+        </motion.p>
+
         {/* CTA Buttons */}
         <motion.div
-          className="flex flex-col sm:flex-row gap-5 justify-center mb-5"
+          className="flex flex-col sm:flex-row gap-5 justify-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
         >
           <Button
             size="lg"
-            className="bg-[#5e2d91] hover:bg-[#4a2373] text-white px-8 py-6 text-base font-bold rounded-lg shadow-xl shadow-purple-900/10 transition-all hover:scale-105 active:scale-95"
+            className="bg-[#5e2d91] hover:bg-[#4a2373] text-white px-10 py-7 text-lg font-bold rounded-[10px] shadow-2xl shadow-purple-900/20 transition-all hover:scale-105 active:scale-95"
             onClick={onStartTrial}
           >
-            {t.hero.startTrial}
+            Explorez nos produits
           </Button>
           <Button
             size="lg"
             variant="outline"
-            className="px-8 py-6 text-base font-bold border-2 border-gray-200 text-gray-900 hover:bg-gray-50 rounded-lg transition-all group hover:scale-105 active:scale-95"
+            className="px-10 py-7 text-lg font-bold border-2 border-gray-200 text-gray-900 hover:bg-gray-50 rounded-[10px] transition-all group hover:scale-105 active:scale-95"
             onClick={onViewDemo}
           >
-            <Play className="mr-2 h-5 w-5 fill-current text-gray-900 group-hover:text-[#5e2d91] transition-colors" />
-            {t.hero.viewDemo}
+            <Play className="mr-3 h-5 w-5 fill-current text-gray-900 group-hover:text-[#5e2d91] transition-colors" />
+            Demander une démonstration
           </Button>
         </motion.div>
 
         {/* Partners Marquee */}
         <motion.div
-          className="pt-8 w-full overflow-hidden mb-16"
+          className="pt-8 w-full overflow-hidden mb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
         >
-          <p className="text-sm text-gray-500 font-medium mb-8">
+          <p className="text-sm text-gray-400 font-bold uppercase tracking-widest mb-10">
             Ils nous font confiance
           </p>
-          <div className="relative flex overflow-x-hidden group opacity-70">
-            <div className="flex animate-marquee whitespace-nowrap gap-12 md:gap-20 items-center py-4">
+          <div className="relative flex overflow-x-hidden group opacity-60">
+            <div className="flex animate-marquee whitespace-nowrap gap-16 md:gap-24 items-center py-4">
               {[...referenceLogos, ...referenceLogos].map((logo, i) => (
                 <div
                   key={i}
-                  className="h-10 md:h-12 w-auto flex-shrink-0 flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  className="h-10 md:h-12 w-auto flex-shrink-0 flex items-center justify-center hover:grayscale-0 transition-all duration-500"
                 >
-                  <img src={logo.src} alt={logo.alt} className="h-full w-auto object-contain max-w-[150px]" />
+                  <img src={logo.src} alt={logo.alt} className="h-full w-auto object-contain max-w-[140px]" />
                 </div>
               ))}
             </div>

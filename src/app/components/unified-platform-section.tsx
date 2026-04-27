@@ -14,27 +14,27 @@ export function UnifiedPlatformSection() {
 
   const pillars = [
     {
-      title: "Collaborer efficacement",
-      description: "Travailler ensemble en temps réel grâce aux espaces partagés, chat et fichiers centralisés. Tout ce dont votre équipe a besoin pour avancer ensemble.",
+      title: "Échanger avec vos équipes",
+      description: "Travailler ensemble en temps réel grâce aux espaces partagés, chaînes d'information, chat, et fichiers centralisés.",
       quote: "« Rainbow a transformé la façon dont nos équipes synchronisent leurs projets au quotidien. »",
       author: "Directeur Technique, Innova",
-      color: "#0085CA",
+      color: "#5e2d91",
       image: collaborateImage
     },
     {
-      title: "Communiquer simplement",
-      description: "Voix, visio, messages instantanés : tout est réuni dans une seule interface pour fluidifier les échanges et gagner un temps précieux.",
+      title: "Discuter en temps réel",
+      description: "Voix, visio, messages instantanés : tout est réuni pour fluidifier les échanges.",
       quote: "« La simplicité de l'interface nous a permis d'adopter l'outil en moins d'une semaine. »",
       author: "Responsable Opérations, Flux",
-      color: "#34B233",
+      color: "#0085CA",
       image: communicateImage
     },
     {
-      title: "Créer des événements impactants",
-      description: "Organisez des webinars, des conférences et des démos produits professionnels pour toucher votre audience et renforcer votre image de marque.",
+      title: "Organiser des réunions et événements",
+      description: "Organisez facilement webinaires, conférences et démonstrations pour engager vos audiences.",
       quote: "« Nos webinaires n'ont jamais été aussi professionnels et engageants. »",
       author: "Directrice Marketing, Zenith",
-      color: "#FF4500",
+      color: "#ea5800",
       image: eventsImage
     }
   ];
@@ -63,14 +63,14 @@ export function UnifiedPlatformSection() {
     <section className="pb-24 lg:pb-32 bg-[#f9fafb] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-4xl mx-auto mb-20">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900 tracking-tight">
-            Une plateforme unifiée
+            Une seule plateforme,
             <br />
-            <span className="text-[#5e2d91]">pour toutes vos communications</span>
+            <span className="text-[#5e2d91]">zéro friction dans vos échanges</span>
           </h2>
-          <p className="text-xl text-gray-600 leading-relaxed">
-            Une suite complète et intuitive pour connecter vos équipes, organiser vos événements professionnels et analyser vos performances.
+          <p className="text-xl text-gray-600 leading-relaxed font-medium">
+            Centralisez vos échanges avec Rainbow et gagnez du temps au quotidien.
           </p>
         </div>
 
@@ -170,7 +170,7 @@ export function UnifiedPlatformSection() {
             <div className="relative w-full aspect-[4/3] lg:aspect-[16/11] rounded-xl overflow-hidden bg-[#111111] shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-1 ring-black/5">
 
               {/* Animated Image Container */}
-              <div className="absolute inset-0 pt-10">
+              <div className="absolute inset-0">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeIndex}
