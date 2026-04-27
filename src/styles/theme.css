@@ -8,7 +8,7 @@
   --card-foreground: #1f2937;
   --popover: #ffffff;
   --popover-foreground: #1f2937;
-  
+
   /* Alcatel Violet Theme */
   --primary: #5e2d91;
   --primary-foreground: #ffffff;
@@ -18,7 +18,7 @@
   --muted-foreground: #6b7280;
   --accent: #f3f4f6;
   --accent-foreground: #1f2937;
-  
+
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
   --border: #e5e7eb;
@@ -28,12 +28,12 @@
   --font-weight-medium: 500;
   --font-weight-normal: 400;
   --ring: #5e2d91;
-  
+
   /* Alcatel Violet Shades */
   --alcatel-violet: #5e2d91;
   --alcatel-violet-light: #7c3aad;
   --alcatel-violet-dark: #4a2373;
-  
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -208,7 +208,7 @@
 
 .sp-cta-banner-dark {
   background-color: #170926;
-  background-image: 
+  background-image:
     radial-gradient(ellipse at top left, rgba(124, 58, 173, 0.15) 0%, transparent 70%),
     radial-gradient(ellipse at bottom right, rgba(94, 45, 145, 0.2) 0%, transparent 80%);
 }
@@ -216,7 +216,10 @@
 .sp-cta-banner-dark::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   /* Sophisticated mouse tracking glow */
   background: radial-gradient(circle 400px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(168, 85, 247, 0.12) 0%, transparent 100%);
   pointer-events: none;
@@ -227,7 +230,10 @@
 .sp-cta-banner-dark::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   opacity: 0.03;
   mix-blend-mode: overlay;
@@ -329,8 +335,13 @@
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {
@@ -340,33 +351,55 @@
 /* Hero Shuffling Text Animation */
 .hero-word-loader {
   display: inline-flex;
-  height: 1.2em;
+  height: 1.1em;
   overflow: hidden;
   align-items: center;
-  vertical-align: bottom;
-  padding-bottom: 0.1em;
+  margin-bottom: -0.15em;
 }
 
 .hero-words {
   overflow: hidden;
   position: relative;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .hero-word {
   display: block;
   height: 100%;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  color: #5e2d91; /* Primary Purple */
+  padding: 0;
+  color: #5e2d91;
+  /* Primary Purple */
   animation: hero_spin 8s infinite ease-in-out;
   white-space: nowrap;
+  text-align: right;
 }
 
 @keyframes hero_spin {
-  0%, 20% { transform: translateY(0); }
-  25%, 45% { transform: translateY(-100%); }
-  50%, 70% { transform: translateY(-200%); }
-  75%, 95% { transform: translateY(-300%); }
-  100% { transform: translateY(-400%); }
+
+  0%,
+  20% {
+    transform: translateY(0);
+  }
+
+  25%,
+  45% {
+    transform: translateY(-100%);
+  }
+
+  50%,
+  70% {
+    transform: translateY(-200%);
+  }
+
+  75%,
+  95% {
+    transform: translateY(-300%);
+  }
+
+  100% {
+    transform: translateY(-400%);
+  }
 }

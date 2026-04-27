@@ -45,16 +45,14 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
           Souveraine. Moderne. Européenne. 🇪🇺
         </motion.p>
 
-        {/* Main Title */}
         <motion.h1
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-[4rem] font-extrabold tracking-[-0.04em] leading-[1.1] mb-8 text-gray-900"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-[4rem] font-extrabold tracking-[-0.04em] leading-[1.2] mb-8 text-gray-900"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
         >
-          Rainbow, la solution pour des
-          <br />
-          <span className="hero-word-loader mt-2">
+          Rainbow, la solution pour des{" "}
+          <span className="hero-word-loader">
             <span className="hero-words">
               <span className="hero-word text-[#5e2d91]">réunions</span>
               <span className="hero-word text-[#5e2d91]">webinaires</span>
@@ -148,11 +146,11 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
               </linearGradient>
             </defs>
             <path d="M0,120 C480,0 960,0 1440,120 L1440,120 L0,120 Z" fill="#f9fafb" />
-            <path 
-              d="M0,120 C480,0 960,0 1440,120" 
-              fill="none" 
-              stroke="url(#rainbow-strip)" 
-              strokeWidth="4" 
+            <path
+              d="M0,120 C480,0 960,0 1440,120"
+              fill="none"
+              stroke="url(#rainbow-strip)"
+              strokeWidth="4"
               strokeLinecap="round"
             />
           </svg>
