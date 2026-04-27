@@ -20,7 +20,7 @@ export function ProductRangeSection() {
       borderColor: 'border-[#ea5800]/20',
       bgColor: 'bg-[#ea5800]/5',
       tags: ['Live', 'Polls', 'Q&A'],
-      description: "Organisez des webinaires professionnels et engageants sans compromis sur la sécurité. Une plateforme conçue pour maximiser l'interaction avec votre audience.",
+      description: "",
       features: [
         "Jusqu'à 1 000 participants en simultané",
         "Outils d'interactivité avancés (Sondages, Q&A)",
@@ -39,7 +39,7 @@ export function ProductRangeSection() {
       borderColor: 'border-[#16a96e]/20',
       bgColor: 'bg-[#16a96e]/5',
       tags: ['Chat', 'Video', 'Files'],
-      description: "Simplifiez la collaboration au sein de votre organisation avec une solution de communication tout-en-un, fluide et hautement sécurisée.",
+      description: "",
       features: [
         "Messagerie d'équipe et canaux de discussion",
         "Appels audio et vidéo HD illimités",

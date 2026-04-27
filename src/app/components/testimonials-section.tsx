@@ -28,7 +28,7 @@ export function TestimonialsSection({ onViewDemo }: { onViewDemo?: () => void })
 
           <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-extrabold tracking-tight text-center text-gray-900 transition-colors">
             Ils ont transformé leur quotidien avec <br/>
-            <span className="text-[#5e2d91]">Rainbow Webinar</span>
+            <span className="text-[#5e2d91]">Rainbow</span>
           </h2>
           <p className="text-center mt-6 text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto transition-colors">
             Découvrez comment nos clients utilisent la puissance de Rainbow pour leurs événements les plus critiques.

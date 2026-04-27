@@ -43,9 +43,9 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           Souveraine. Moderne. Européenne.
-          <img 
-            src="https://flagcdn.com/w40/eu.png" 
-            alt="UE" 
+          <img
+            src="https://flagcdn.com/w40/eu.png"
+            alt="UE"
             className="inline-block w-5 h-auto ml-2 align-middle translate-y-[-1px]"
           />
         </motion.p>
