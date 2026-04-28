@@ -32,6 +32,75 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
 
   return (
     <section className="relative flex flex-col items-center justify-center bg-white overflow-hidden pt-24">
+
+      {/* ── GLOBAL color blobs — span the full section, behind everything ── */}
+      <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Top-left blob — coral/orange, bleeds into text area */}
+        <div style={{
+          position: "absolute",
+          left: "-25%",
+          top: "33%",
+          width: "80vw",
+          height: "40vw",
+          maxWidth: 680,
+          maxHeight: 580,
+          borderRadius: "50%",
+          background: "radial-gradient(circle at 60% 50%, rgba(255, 100, 50, 0.3) 0%, rgba(255, 69, 0, 0.14) 40%, transparent 70%)",
+          filter: "blur(64px)",
+        }} />
+        {/* Top-right blob — green, bleeds into text area */}
+        <div style={{
+          position: "absolute",
+          right: "-24%",
+          top: "33%",
+          width: "38vw",
+          height: "38vw",
+          maxWidth: 740,
+          maxHeight: 540,
+          borderRadius: "50%",
+          background: "radial-gradient(circle at 40% 55%, rgba(52, 178, 51, 0.28) 0%, rgba(52, 178, 51, 0.12) 42%, transparent 70%)",
+          filter: "blur(60px)",
+        }} />
+        {/* Center-left blob — pink/magenta */}
+        <div style={{
+          position: "absolute",
+          left: "2%",
+          top: "46%",
+          width: "32vw",
+          height: "32vw",
+          maxWidth: 560,
+          maxHeight: 460,
+          borderRadius: "50%",
+          background: "radial-gradient(circle at 55% 45%, rgba(207, 0, 114, 0.28) 0%, rgba(207, 0, 114, 0.1) 45%, transparent 70%)",
+          filter: "blur(56px)",
+        }} />
+        {/* Center blob — purple, behind the arch */}
+        <div style={{
+          position: "absolute",
+          left: "18%",
+          top: "47%",
+          width: "64vw",
+          height: "30vw",
+          maxWidth: 1200,
+          maxHeight: 240,
+          borderRadius: "50%",
+          background: "radial-gradient(circle at 50% 40%, rgba(94, 45, 145, 0.22) 0%, rgba(94, 45, 145, 0.08) 52%, transparent 72%)",
+          filter: "blur(72px)",
+        }} />
+        {/* Center-right blob — blue */}
+        <div style={{
+          position: "absolute",
+          right: "-1%",
+          top: "45%",
+          width: "44vw",
+          height: "34vw",
+          maxWidth: 680,
+          maxHeight: 580,
+          borderRadius: "50%",
+          background: "radial-gradient(circle at 40% 50%, rgba(0, 133, 202, 0.28) 0%, rgba(0, 133, 202, 0.11) 45%, transparent 70%)",
+          filter: "blur(58px)",
+        }} />
+      </div>
       {/* ── Text content ── */}
       <div className="max-w-6xl mx-auto text-center px-4 z-10 relative">
 
@@ -46,7 +115,7 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
           <img
             src="https://flagcdn.com/w40/eu.png"
             alt="UE"
-            className="inline-block w-5 h-auto ml-2 align-middle translate-y-[-1px]"
+            className="inline-block w-6 h-auto ml-2 align-middle translate-y-[-1px]"
           />
         </motion.p>
 
@@ -67,16 +136,6 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
           </span>
           {" "}réussis.
         </motion.h1>
-
-        {/* Description */}
-        <motion.p
-          className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed font-medium"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-        >
-          Messagerie, appels, partage de fichiers, visioconférences : tout ce dont vos équipes ont besoin, en un seul outil.
-        </motion.p>
 
         {/* CTA Buttons */}
         <motion.div
@@ -113,7 +172,13 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
           <p className="text-sm text-gray-400 font-bold uppercase tracking-widest mb-10">
             Ils nous font confiance
           </p>
-          <div className="relative flex overflow-x-hidden group opacity-60">
+          <div
+            className="relative flex overflow-x-hidden group opacity-60"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+            }}
+          >
             <div className="flex animate-marquee whitespace-nowrap gap-16 md:gap-24 items-center py-4">
               {[...referenceLogos, ...referenceLogos].map((logo, i) => (
                 <div
