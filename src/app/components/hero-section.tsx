@@ -56,7 +56,7 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
     const cornerY = 120 - p * 120;   // 120 → 0
     const controlY = p * 120;         // 0   → 120
 
-    const fill = `M0,${cornerY} C480,${controlY} 960,${controlY} 1440,${cornerY} L1440,400 L0,400 Z`;const stroke = `M0,${cornerY} C480,${controlY} 960,${controlY} 1440,${cornerY}`;
+    const fill = `M0,${cornerY} C480,${controlY} 960,${controlY} 1440,${cornerY} L1440,400 L0,400 Z`; const stroke = `M0,${cornerY} C480,${controlY} 960,${controlY} 1440,${cornerY}`;
 
     fillPathRef.current?.setAttribute("d", fill);
     strokePathRef.current?.setAttribute("d", stroke);
@@ -115,7 +115,7 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
         >
           <Button
             size="lg"
-            className="bg-[#5e2d91] hover:bg-[#4a2373] text-white px-10 py-7 text-lg font-bold rounded-[10px] shadow-2xl shadow-purple-900/20 transition-all hover:scale-105 active:scale-95"
+            className="bg-[#5e2d91] hover:bg-[#4a2373] text-white px-10 py-7 text-lg font-bold rounded-[10px] shadow-2xl shadow-purple-900/20 transition-all active:scale-95"
             onClick={onStartTrial}
           >
             Explorez nos produits
@@ -123,7 +123,7 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
           <Button
             size="lg"
             variant="outline"
-            className="px-10 py-7 text-lg font-bold border-2 border-gray-200 text-gray-900 hover:bg-gray-50 rounded-[10px] transition-all group hover:scale-105 active:scale-95"
+            className="px-10 py-7 text-lg font-bold border-2 border-gray-200 text-gray-900 hover:bg-gray-50 rounded-[10px] transition-all group active:scale-95"
             onClick={onViewDemo}
           >
             <Play className="mr-3 h-5 w-5 fill-current text-gray-900 group-hover:text-[#5e2d91] transition-colors" />

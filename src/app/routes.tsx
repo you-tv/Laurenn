@@ -19,6 +19,7 @@ import CheckoutSuccess from "./pages/checkout-success.tsx";
 import Admin from "./pages/admin.tsx";
 import Legal from "./pages/legal.tsx";
 import { About } from "./pages/about.tsx";
+import TestimonialsPage from "./pages/testimonials.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/testimonials",
+        element: <TestimonialsPage />,
       },
       {
         path: "/about",

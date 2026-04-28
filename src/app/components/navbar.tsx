@@ -30,6 +30,7 @@ export function Navbar() {
 
   const resourceLinks = [
     { label: 'Blog', href: '/blog' },
+    { label: 'Avis clients', href: '/testimonials' },
     { label: "Centre d'aide", href: '/support' },
     { label: 'Sécurité & Certifications', href: '/security' },
     { label: 'Legal Center', href: '/legal' },
