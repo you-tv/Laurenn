@@ -18,6 +18,7 @@ import { SecurityCertificationsSection } from "../components/security-certificat
 import { TargetAudienceSection } from "../components/target-audience-section";
 import { analyticsTracker } from "../services/analytics-tracker";
 import { SectionDivider } from "../components/section-divider";
+import { StatsBadgesSection } from "../components/stats-badges-section";
 import ctaBackground from "figma:asset/cta_bg.jpg";
 import pageBackground from "figma:asset/page_bg.png";
 
@@ -132,8 +133,11 @@ export default function Home() {
         {/* Product Range Section - white */}
         <ProductRangeSection />
 
-        {/* white → gray-50 */}
-        <SectionDivider fromColor="#ffffff" toColor="#f9fafb" />
+        {/* Stats Badges Section - purple */}
+        <StatsBadgesSection />
+
+        {/* purple → gray-50 */}
+        <SectionDivider fromColor="#5e2d91" toColor="#f9fafb" />
 
         {/* Testimonials Section - gray-50 */}
         <TestimonialsSection onViewDemo={handleViewDemo} />
