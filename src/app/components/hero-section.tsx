@@ -66,15 +66,16 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-col items-center justify-center bg-white overflow-hidden pt-24"
+      className="relative flex flex-col items-center justify-center overflow-hidden pt-24"
+      style={{ background: "linear-gradient(to bottom, #ffffff 0%, #faf7fd 60%, #f3eaf9 100%)" }}
     >
       {/* ── Color blobs ── */}
       <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div style={{ position: "absolute", left: "-25%", top: "33%", width: "80vw", height: "40vw", maxWidth: 680, maxHeight: 580, borderRadius: "50%", background: "radial-gradient(circle at 60% 50%, rgba(255,100,50,0.3) 0%, rgba(255,69,0,0.14) 40%, transparent 70%)", filter: "blur(64px)" }} />
-        <div style={{ position: "absolute", right: "-24%", top: "33%", width: "38vw", height: "38vw", maxWidth: 740, maxHeight: 540, borderRadius: "50%", background: "radial-gradient(circle at 40% 55%, rgba(52,178,51,0.28) 0%, rgba(52,178,51,0.12) 42%, transparent 70%)", filter: "blur(60px)" }} />
-        <div style={{ position: "absolute", left: "2%", top: "46%", width: "32vw", height: "32vw", maxWidth: 560, maxHeight: 460, borderRadius: "50%", background: "radial-gradient(circle at 55% 45%, rgba(207,0,114,0.28) 0%, rgba(207,0,114,0.1) 45%, transparent 70%)", filter: "blur(56px)" }} />
-        <div style={{ position: "absolute", left: "18%", top: "47%", width: "64vw", height: "30vw", maxWidth: 1200, maxHeight: 240, borderRadius: "50%", background: "radial-gradient(circle at 50% 40%, rgba(94,45,145,0.22) 0%, rgba(94,45,145,0.08) 52%, transparent 72%)", filter: "blur(72px)" }} />
-        <div style={{ position: "absolute", right: "-1%", top: "45%", width: "44vw", height: "34vw", maxWidth: 680, maxHeight: 580, borderRadius: "50%", background: "radial-gradient(circle at 40% 50%, rgba(0,133,202,0.28) 0%, rgba(0,133,202,0.11) 45%, transparent 70%)", filter: "blur(58px)" }} />
+        <div style={{ position: "absolute", left: "-25%", top: "33%", width: "80vw", height: "40vw", maxWidth: 680, maxHeight: 580, borderRadius: "50%", background: "radial-gradient(circle at 60% 50%, rgba(182, 120, 187, 0.3) 0%, rgba(182, 120, 187, 0.3) 40%, transparent 70%)", filter: "blur(64px)" }} />
+        <div style={{ position: "absolute", right: "-24%", top: "33%", width: "38vw", height: "38vw", maxWidth: 740, maxHeight: 540, borderRadius: "50%", background: "radial-gradient(circle at 40% 55%, rgba(182, 120, 187, 0.3) 0%, rgba(182, 120, 187, 0.3) 42%, transparent 70%)", filter: "blur(60px)" }} />
+        <div style={{ position: "absolute", left: "2%", top: "46%", width: "32vw", height: "32vw", maxWidth: 560, maxHeight: 460, borderRadius: "50%", background: "radial-gradient(circle at 55% 45%, rgba(182, 120, 187, 0.3) 0%, rgba(182, 120, 187, 0.3) 45%, transparent 70%)", filter: "blur(56px)" }} />
+        <div style={{ position: "absolute", left: "18%", top: "47%", width: "64vw", height: "30vw", maxWidth: 1200, maxHeight: 240, borderRadius: "50%", background: "radial-gradient(circle at 50% 40%, rgba(182, 120, 187, 0.3) 0%, rgba(182, 120, 187, 0.3) 52%, transparent 72%)", filter: "blur(72px)" }} />
+        <div style={{ position: "absolute", right: "-1%", top: "45%", width: "44vw", height: "34vw", maxWidth: 680, maxHeight: 580, borderRadius: "50%", background: "radial-gradient(circle at 40% 50%, rgba(182, 120, 187, 0.3) 0%, rgba(182, 120, 187, 0.3) 45%, transparent 70%)", filter: "blur(58px)" }} />
       </div>
 
       {/* ── Text content ── */}
@@ -157,54 +158,20 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
 
       {/* ── Image with scroll-morphing arch ── */}
       <div className="relative w-full mt-10">
-
-        {/* Arch SVG — path mutated directly via refs, no re-renders */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-0 z-0 pointer-events-none"
-          style={{ height: "clamp(160px, 12vw, 220px)" }}
-        >
-          <svg
-            viewBox="0 -4 1440 128"
-            preserveAspectRatio="none"
-            className="w-full h-full block"
-            overflow="visible"
-          >
-            <defs>
-              <linearGradient id="rainbow-strip" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#34B233" />
-                <stop offset="25%" stopColor="#0085CA" />
-                <stop offset="50%" stopColor="#5e2d91" />
-                <stop offset="75%" stopColor="#CF0072" />
-                <stop offset="100%" stopColor="#FF4500" />
-              </linearGradient>
-            </defs>
-
-            {/* Gray fill — starts convex, morphs to concave */}
-            <path
-              ref={fillPathRef}
-              d="M0,120 C480,0 960,0 1440,120 L1440,400 L0,400 Z"
-              fill="#f9fafb"
-            />
-
-            {/* Rainbow stroke — follows same curve */}
-            <path
-              ref={strokePathRef}
-              d="M0,120 C480,0 960,0 1440,120"
-              fill="none"
-              stroke="url(#rainbow-strip)"
-              strokeWidth="4"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-
         {/* Gray stage below arch */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 bg-[#f9fafb] z-0"
-          style={{ top: "clamp(159px, 12vw, 219px)" }}
-        />
+<div
+  aria-hidden="true"
+  className="absolute inset-x-0 bottom-0 z-0 pointer-events-none"
+  style={{
+    height: "72%",
+    background: `
+      radial-gradient(ellipse 90% 60% at 50% 100%, rgba(140, 60, 180, 0.22) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 100%, rgba(182, 120, 187, 0.18) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(182, 120, 187, 0.18) 0%, transparent 65%),
+      linear-gradient(to top, rgba(120, 40, 170, 0.18) 0%, rgba(182, 120, 187, 0.08) 35%, transparent 70%)
+    `,
+  }}
+/>
 
         {/* Product image */}
         <motion.div

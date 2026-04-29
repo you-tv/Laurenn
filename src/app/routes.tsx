@@ -20,6 +20,7 @@ import Admin from "./pages/admin.tsx";
 import Legal from "./pages/legal.tsx";
 import { About } from "./pages/about.tsx";
 import TestimonialsPage from "./pages/testimonials.tsx";
+import HomeV2 from "./pages/home-v2.tsx";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/home-v2",
+        element: <HomeV2 />,
       },
       {
         path: "/testimonials",
