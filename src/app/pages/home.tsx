@@ -17,7 +17,6 @@ import { DiagonalGradientBackground } from "../components/diagonal-gradient-back
 import { SecurityCertificationsSection } from "../components/security-certifications-section";
 import { TargetAudienceSection } from "../components/target-audience-section";
 import { analyticsTracker } from "../services/analytics-tracker";
-import { SectionDivider } from "../components/section-divider";
 import { StatsBadgesSection } from "../components/stats-badges-section";
 import ctaBackground from "figma:asset/cta_bg.jpg";
 import pageBackground from "figma:asset/page_bg.png";
@@ -112,14 +111,11 @@ export default function Home() {
           onViewVideo={handleViewVideo}
         />
 
-        {/* Unified Platform Section - white */}
+        {/* Unified Platform Section - gray-50 */}
         <UnifiedPlatformSection />
 
-        {/* Target Audience Section - gray-50 */}
+        {/* Target Audience Section - white */}
         <TargetAudienceSection />
-
-        {/* gray-50 → purple */}
-        <SectionDivider fromColor="#f9fafb" toColor="#5e2d91" />
 
         {/* Stats Section - purple */}
         <StatsSection />
@@ -127,29 +123,20 @@ export default function Home() {
         {/* Security Certifications Section - gray-50 */}
         <SecurityCertificationsSection />
 
-        {/* gray-50 → white */}
-        <SectionDivider fromColor="#f9fafb" toColor="#ffffff" />
-
         {/* Product Range Section - white */}
         <ProductRangeSection />
 
         {/* Stats Badges Section - purple */}
         <StatsBadgesSection />
 
-        {/* purple → gray-50 */}
-        <SectionDivider fromColor="#5e2d91" toColor="#f9fafb" />
-
         {/* Testimonials Section - gray-50 */}
         <TestimonialsSection onViewDemo={handleViewDemo} />
-
-        {/* gray-50 → white */}
-        <SectionDivider fromColor="#f9fafb" toColor="#ffffff" />
 
         {/* FAQ Section - white */}
         <FAQSection />
 
         {/* CTA Section - Call to Action */}
-        <section className="py-24 bg-white">
+        <section className="py-24 lg:py-32 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="sp-preview">
               <div 

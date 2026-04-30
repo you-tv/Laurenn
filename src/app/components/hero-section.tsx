@@ -3,7 +3,7 @@ import { Play } from "lucide-react";
 import { useLanguage } from "../i18n/language-context";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "motion/react";
 import { useRef, useState, useCallback } from "react";
-import rainbowChatImg from "figma:asset/rainbow_chat.png";
+import rainbowIntroVideo from "../../assets/rainbow_intro.mp4";
 import bestfordLogo from "figma:asset/bestford.png";
 import eydapLogo from "figma:asset/eydap.png";
 import herrenbergLogo from "figma:asset/herrenberg.png";
@@ -67,15 +67,20 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
     <section
       ref={sectionRef}
       className="relative flex flex-col items-center justify-center overflow-hidden pt-24"
-      style={{ background: "linear-gradient(to bottom, #ffffff 0%, #faf7fd 60%, #f3eaf9 100%)" }}
+      style={{ background: "linear-gradient(170deg, #ffffff 0%, #f8f5fc 35%, #f0e8f7 65%, #ebe2f3 100%)" }}
     >
       {/* ── Color blobs ── */}
       <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div style={{ position: "absolute", left: "-25%", top: "33%", width: "80vw", height: "40vw", maxWidth: 680, maxHeight: 580, borderRadius: "50%", background: "radial-gradient(circle at 60% 50%, rgba(182, 120, 187, 0.3) 0%, rgba(182, 120, 187, 0.3) 40%, transparent 70%)", filter: "blur(64px)" }} />
-        <div style={{ position: "absolute", right: "-24%", top: "33%", width: "38vw", height: "38vw", maxWidth: 740, maxHeight: 540, borderRadius: "50%", background: "radial-gradient(circle at 40% 55%, rgba(182, 120, 187, 0.3) 0%, rgba(182, 120, 187, 0.3) 42%, transparent 70%)", filter: "blur(60px)" }} />
-        <div style={{ position: "absolute", left: "2%", top: "46%", width: "32vw", height: "32vw", maxWidth: 560, maxHeight: 460, borderRadius: "50%", background: "radial-gradient(circle at 55% 45%, rgba(182, 120, 187, 0.3) 0%, rgba(182, 120, 187, 0.3) 45%, transparent 70%)", filter: "blur(56px)" }} />
-        <div style={{ position: "absolute", left: "18%", top: "47%", width: "64vw", height: "30vw", maxWidth: 1200, maxHeight: 240, borderRadius: "50%", background: "radial-gradient(circle at 50% 40%, rgba(182, 120, 187, 0.3) 0%, rgba(182, 120, 187, 0.3) 52%, transparent 72%)", filter: "blur(72px)" }} />
-        <div style={{ position: "absolute", right: "-1%", top: "45%", width: "44vw", height: "34vw", maxWidth: 680, maxHeight: 580, borderRadius: "50%", background: "radial-gradient(circle at 40% 50%, rgba(182, 120, 187, 0.3) 0%, rgba(182, 120, 187, 0.3) 45%, transparent 70%)", filter: "blur(58px)" }} />
+        {/* Soft violet wash — top left */}
+        <div style={{ position: "absolute", left: "-15%", top: "-10%", width: "70vw", height: "50vw", maxWidth: 900, maxHeight: 700, borderRadius: "50%", background: "radial-gradient(circle at 55% 55%, rgba(139, 92, 188, 0.15) 0%, rgba(139, 92, 188, 0.06) 40%, transparent 70%)", filter: "blur(80px)" }} />
+        {/* Warm magenta accent — top right */}
+        <div style={{ position: "absolute", right: "-10%", top: "5%", width: "45vw", height: "45vw", maxWidth: 680, maxHeight: 580, borderRadius: "50%", background: "radial-gradient(circle at 45% 50%, rgba(207, 0, 114, 0.10) 0%, rgba(207, 0, 114, 0.04) 45%, transparent 70%)", filter: "blur(72px)" }} />
+        {/* Deep violet core — center-left */}
+        <div style={{ position: "absolute", left: "5%", top: "30%", width: "40vw", height: "40vw", maxWidth: 620, maxHeight: 520, borderRadius: "50%", background: "radial-gradient(circle at 50% 45%, rgba(94, 45, 145, 0.12) 0%, rgba(94, 45, 145, 0.04) 50%, transparent 72%)", filter: "blur(64px)" }} />
+        {/* Cool blue-violet highlight — center-right */}
+        <div style={{ position: "absolute", right: "5%", top: "25%", width: "35vw", height: "35vw", maxWidth: 560, maxHeight: 480, borderRadius: "50%", background: "radial-gradient(circle at 40% 55%, rgba(109, 40, 217, 0.10) 0%, rgba(109, 40, 217, 0.03) 50%, transparent 68%)", filter: "blur(56px)" }} />
+        {/* Ambient glow — bottom center */}
+        <div style={{ position: "absolute", left: "20%", bottom: "-5%", width: "55vw", height: "30vw", maxWidth: 1000, maxHeight: 400, borderRadius: "50%", background: "radial-gradient(ellipse at 50% 50%, rgba(167, 139, 250, 0.10) 0%, rgba(167, 139, 250, 0.03) 55%, transparent 75%)", filter: "blur(80px)" }} />
       </div>
 
       {/* ── Text content ── */}
@@ -165,17 +170,17 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
   style={{
     height: "72%",
     background: `
-      radial-gradient(ellipse 90% 60% at 50% 100%, rgba(140, 60, 180, 0.22) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 40% at 20% 100%, rgba(182, 120, 187, 0.18) 0%, transparent 65%),
-      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(182, 120, 187, 0.18) 0%, transparent 65%),
-      linear-gradient(to top, rgba(120, 40, 170, 0.18) 0%, rgba(182, 120, 187, 0.08) 35%, transparent 70%)
+      radial-gradient(ellipse 80% 50% at 50% 100%, rgba(94, 45, 145, 0.14) 0%, transparent 75%),
+      radial-gradient(ellipse 50% 35% at 25% 100%, rgba(139, 92, 188, 0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 35% at 75% 100%, rgba(139, 92, 188, 0.10) 0%, transparent 70%),
+      linear-gradient(to top, rgba(94, 45, 145, 0.10) 0%, rgba(139, 92, 188, 0.05) 40%, transparent 75%)
     `,
   }}
 />
 
         {/* Product image */}
         <motion.div
-          className="relative z-10 max-w-5xl mx-auto px-4 pb-20 md:pb-28"
+          className="relative z-10 max-w-5xl mx-auto px-4 pb-16 md:pb-24"
           initial={{ opacity: 0, y: 28, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
@@ -185,11 +190,13 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
             onClick={onViewVideo}
             style={{ boxShadow: "0 0 0 1px rgba(0,0,0,0.05), 0 8px 16px rgba(0,0,0,0.08), 0 32px 72px rgba(0,0,0,0.12), 0 56px 96px rgba(0,0,0,0.08)" }}
           >
-            <img
-              src={rainbowChatImg}
-              alt="Interface Rainbow — Messagerie, Visioconférence & Collaboration"
+            <video
+              src={rainbowIntroVideo}
+              autoPlay
+              muted
+              loop
+              playsInline
               className="w-full h-auto object-cover block"
-              draggable={false}
             />
             <div className="absolute inset-0 bg-gray-900/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="bg-white/95 backdrop-blur-sm rounded-full p-6 shadow-2xl flex items-center justify-center transform scale-90 group-hover:scale-100 transition-all duration-300">
