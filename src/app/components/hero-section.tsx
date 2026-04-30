@@ -3,7 +3,6 @@ import { Play } from "lucide-react";
 import { useLanguage } from "../i18n/language-context";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "motion/react";
 import { useRef, useState, useCallback } from "react";
-import rainbowChatImg from "figma:asset/rainbow_chat.png";
 import bestfordLogo from "figma:asset/bestford.png";
 import eydapLogo from "figma:asset/eydap.png";
 import herrenbergLogo from "figma:asset/herrenberg.png";
@@ -193,7 +192,7 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
               d="M0,120 C480,0 960,0 1440,120"
               fill="none"
               stroke="url(#rainbow-strip)"
-              strokeWidth="4"
+              strokeWidth="3"
               strokeLinecap="round"
             />
           </svg>
@@ -218,11 +217,13 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
             onClick={onViewVideo}
             style={{ boxShadow: "0 0 0 1px rgba(0,0,0,0.05), 0 8px 16px rgba(0,0,0,0.08), 0 32px 72px rgba(0,0,0,0.12), 0 56px 96px rgba(0,0,0,0.08)" }}
           >
-            <img
-              src={rainbowChatImg}
-              alt="Interface Rainbow — Messagerie, Visioconférence & Collaboration"
+            <video
+              src={`${import.meta.env.BASE_URL}rainbow_intro.mp4`}
+              autoPlay
+              muted
+              loop
+              playsInline
               className="w-full h-auto object-cover block"
-              draggable={false}
             />
             <div className="absolute inset-0 bg-gray-900/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="bg-white/95 backdrop-blur-sm rounded-full p-6 shadow-2xl flex items-center justify-center transform scale-90 group-hover:scale-100 transition-all duration-300">
