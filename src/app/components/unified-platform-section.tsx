@@ -60,7 +60,7 @@ export function UnifiedPlatformSection() {
   };
 
   return (
-    <section className="pb-24 lg:pb-32 bg-[#f9fafb] relative overflow-hidden">
+    <section className="py-24 lg:py-32 bg-[#f9fafb] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-20">

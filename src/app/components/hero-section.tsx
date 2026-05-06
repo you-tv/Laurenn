@@ -9,6 +9,12 @@ import londonUniversityLogo from "figma:asset/london_university.png";
 import acnLogo from "figma:asset/acn.png";
 import nexonLogo from "figma:asset/nexon.png";
 import perpignanLogo from "figma:asset/perpignan.png";
+import anssiLogo from "figma:asset/anssi.png";
+import hdsLogo from "figma:asset/hds.webp";
+import hipaaLogo from "figma:asset/hipaa.png";
+import iso27001Logo from "figma:asset/iso27001.png";
+import iso9001Logo from "figma:asset/iso9001.png";
+import rgpdLogo from "figma:asset/rgpd.jpg";
 
 interface HeroSectionProps {
   onStartTrial: () => void;
@@ -26,17 +32,13 @@ const referenceLogos = [
   { src: perpignanLogo, alt: "Perpignan" },
 ];
 
-const features = [
-  {
-    icon: ShieldCheck,
-    title: "Réunions sécurisées",
-    desc: "Protection des données de bout en bout",
-  },
-  {
-    icon: Layers,
-    title: "Collaboration interactive",
-    desc: "Partage d'écran, chat, sondages et plus encore",
-  },
+const certifications = [
+  { src: anssiLogo, alt: "ANSSI", label: "ANSSI" },
+  { src: hdsLogo, alt: "HDS", label: "HDS" },
+  { src: rgpdLogo, alt: "RGPD", label: "RGPD" },
+  { src: iso27001Logo, alt: "ISO 27001", label: "ISO 27001" },
+  { src: hipaaLogo, alt: "HIPAA", label: "HIPAA" },
+  { src: iso9001Logo, alt: "ISO 9001", label: "ISO 9001" },
 ];
 
 export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSectionProps) {
@@ -122,25 +124,33 @@ export function HeroSection({ onStartTrial, onViewDemo, onViewVideo }: HeroSecti
             </Button>
           </motion.div>
 
-          {/* Feature bullets */}
-          <motion.div
-            className="flex flex-col sm:flex-row gap-6"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.38 }}
-          >
-            {features.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="flex items-start gap-3 min-w-0">
-                <div className="mt-0.5 shrink-0 w-8 h-8 rounded-lg bg-[#5e2d91]/8 flex items-center justify-center">
-                  <Icon className="w-4 h-4 text-[#5e2d91]" strokeWidth={2} />
-                </div>
-                <div>
-                  <p className="text-[13px] font-semibold text-gray-800 leading-snug">{title}</p>
-                  <p className="text-[12px] text-gray-400 leading-snug mt-0.5">{desc}</p>
-                </div>
-              </div>
-            ))}
-          </motion.div>
+           {/* Privacy & Certifications */}
+           <motion.div
+             className="flex flex-col gap-4"
+             initial={{ opacity: 0, y: 12 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ duration: 0.6, ease: "easeOut", delay: 0.38 }}
+           >
+             <div className="flex items-center gap-2">
+               <ShieldCheck className="w-4 h-4 text-[#5e2d91]" strokeWidth={2} />
+               <span className="text-[13px] font-semibold text-gray-700 tracking-wide uppercase">Conçu pour la confidentialité</span>
+             </div>
+             <div className="flex flex-wrap items-center gap-4 md:gap-6">
+               {certifications.map((cert) => (
+                 <div
+                   key={cert.label}
+                   className="group relative h-10 md:h-12 w-auto flex-shrink-0 transition-transform duration-300 hover:scale-105"
+                   title={cert.alt}
+                 >
+                   <img
+                     src={cert.src}
+                     alt={cert.alt}
+                     className="h-full w-auto object-contain opacity-70 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                   />
+                 </div>
+               ))}
+             </div>
+           </motion.div>
         </div>
 
         {/* ── RIGHT: Product image + color aura ── */}

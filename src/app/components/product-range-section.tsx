@@ -1,11 +1,7 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { useLanguage } from "../i18n/language-context";
 import rainbowCollaborationImage from "figma:asset/rainbow_chat.png";
 import rainbowWebinarImage from "figma:asset/webinar_live.png";
-import rainbowWebinarLogo from "figma:asset/rainbow_webinar_logo.png";
-import rainbowCollaborationLogo from "figma:asset/rainbow_collaboration.png";
-
-import { Check } from "lucide-react";
 
 export function ProductRangeSection() {
   const { t } = useLanguage();
@@ -17,10 +13,8 @@ export function ProductRangeSection() {
       titleHighlight: 'Webinar',
       subtitle: 'La solution souveraine pour vos événements digitaux',
       accentColor: '#ea5800',
-      borderColor: 'border-[#ea5800]/20',
-      bgColor: 'bg-[#ea5800]/5',
-      tags: ['Live', 'Polls', 'Q&A'],
-      description: "",
+      image: rainbowWebinarImage,
+      tags: ['Live', 'Polls', 'Q&A', 'Analytics'],
       features: [
         "Jusqu'à 1 000 participants en simultané",
         "Outils d'interactivité avancés (Sondages, Q&A)",
@@ -36,10 +30,8 @@ export function ProductRangeSection() {
       titleHighlight: 'Collaboration',
       subtitle: 'Communications unifiées pour les entreprises modernes',
       accentColor: '#16a96e',
-      borderColor: 'border-[#16a96e]/20',
-      bgColor: 'bg-[#16a96e]/5',
-      tags: ['Chat', 'Video', 'Files'],
-      description: "",
+      image: rainbowCollaborationImage,
+      tags: ['Chat', 'Video', 'Files', 'Presence'],
       features: [
         "Messagerie d'équipe et canaux de discussion",
         "Appels audio et vidéo HD illimités",
@@ -52,85 +44,84 @@ export function ProductRangeSection() {
   ];
 
   return (
-    <section className="py-24 lg:py-32 bg-white overflow-hidden">
+    <section className="py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight text-gray-900 leading-tight">
+        <div className="text-center mb-16 lg:mb-20">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 text-gray-900">
             Trouvez la solution
             <br />
             <span className="text-[#5e2d91]">qui vous correspond le mieux</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
+          <p className="text-base md:text-lg text-gray-500 max-w-2xl mx-auto">
             Deux plateformes complémentaires pour répondre à tous vos besoins de communication et d'événementiel.
           </p>
         </div>
 
         {/* Product Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
           {products.map((product) => (
             <div
               key={product.id}
-              className={`flex flex-col relative p-10 md:p-14 rounded-3xl border ${product.borderColor} ${product.bgColor} transition-all duration-500 hover:shadow-2xl hover:shadow-black/5 group`}
+              className="group flex flex-col bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-gray-300 transition-all duration-300"
             >
-              {/* Category Tags */}
-              <div className="mb-8">
-                <div className="flex flex-wrap gap-2">
+              {/* Product Image */}
+              <div className="aspect-[16/10] overflow-hidden bg-gray-50">
+                <img
+                  src={product.image}
+                  alt={product.titleHighlight}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+
+              <div className="p-8 md:p-10 flex flex-col flex-grow">
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-6">
                   {product.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-4 py-1 rounded-full bg-white/80 backdrop-blur-sm border border-gray-100 text-xs font-bold uppercase tracking-wider"
-                      style={{ color: product.accentColor }}
+                      className="px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider border rounded"
+                      style={{ color: product.accentColor, borderColor: `${product.accentColor}30` }}
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-              </div>
 
-              {/* Title & Subtitle */}
-              <div className="mb-8">
-                <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">
+                {/* Title */}
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
                   {product.titlePrefix} <span style={{ color: product.accentColor }}>{product.titleHighlight}</span>
                 </h3>
-                <p className="text-[#5e2d91] font-bold text-lg mb-6">
+                <p className="text-gray-500 text-sm mb-6">
                   {product.subtitle}
                 </p>
-                <p className="text-gray-500 text-lg leading-relaxed">
-                  {product.description}
-                </p>
-              </div>
 
-              {/* Feature List */}
-              <div className="mb-12 flex-grow">
-                <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-6">Fonctionnalités clés</h4>
-                <ul className="space-y-4">
+                {/* Features */}
+                <ul className="space-y-3 mb-8 flex-grow">
                   {product.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-4">
-                      <div 
-                        className="mt-1 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                        style={{ backgroundColor: `${product.accentColor}20` }}
-                      >
-                        <Check className="w-3.5 h-3.5" style={{ color: product.accentColor }} />
-                      </div>
-                      <span className="text-gray-700 font-medium">{feature}</span>
+                    <li key={idx} className="flex items-start gap-3">
+                      <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: product.accentColor }} />
+                      <span className="text-gray-600 text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
 
-              {/* CTA Button */}
-              <div>
+                {/* Primary CTA */}
                 <a
                   href={product.link}
-                  className="w-full py-5 rounded-[10px] font-extrabold text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95"
-                  style={{ 
-                    backgroundColor: product.accentColor,
-                    color: '#fff'
-                  }}
+                  className="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white text-center transition-all duration-300 hover:shadow-lg active:scale-[0.98]"
+                  style={{ backgroundColor: product.accentColor }}
                 >
-                  Découvrir la solution
-                  <ArrowRight className="w-5 h-5" />
+                  Découvrir {product.titleHighlight}
+                </a>
+                
+                {/* Secondary CTA */}
+                <a
+                  href={product.link}
+                  className="w-full py-3 text-center text-sm font-semibold mt-3 transition-colors"
+                  style={{ color: product.accentColor }}
+                >
+                  Voir les fonctionnalités →
                 </a>
               </div>
             </div>
