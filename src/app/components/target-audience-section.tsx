@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { GraduationCap, TrendingUp, Building2, Users } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -10,6 +10,26 @@ import managersImage from "figma:asset/collaboration_hero.jpg";
 
 export function TargetAudienceSection() {
   const [activeTab, setActiveTab] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 });
+
+  const updatePillPosition = (index: number) => {
+    const el = tabRefs.current[index];
+    if (el) {
+      setPillStyle({ left: el.offsetLeft, width: el.offsetWidth });
+    }
+  };
+
+  const handleTabClick = (index: number) => {
+    setActiveTab(index);
+    updatePillPosition(index);
+  };
+
+  useEffect(() => {
+    // Set initial pill position after first render
+    const timer = setTimeout(() => updatePillPosition(0), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   const audiences = [
     {
@@ -39,7 +59,7 @@ export function TargetAudienceSection() {
     {
       icon: Users,
       title: "Managers & consultants",
-      description: "Optimisez la prise de décision et la coordination d’équipes grâce à une communication fluide et sécurisée.",
+      description: "Optimisez la prise de décision et la coordination d'équipes grâce à une communication fluide et sécurisée.",
       highlight: "Optimisez la coordination de vos équipes",
       image: managersImage,
       color: "#16a96e"
@@ -61,30 +81,43 @@ export function TargetAudienceSection() {
           </p>
         </div>
 
-        {/* Tab Switcher - Clean & Minimalist */}
-        <div className="flex justify-center mb-16">
-          <div className="inline-flex p-1 bg-white rounded-2xl border border-gray-200/50 shadow-sm">
-            {audiences.map((audience, index) => {
-              const isActive = activeTab === index;
-              return (
-                <button
-                  key={index}
-                  onClick={() => setActiveTab(index)}
-                  className={`flex items-center gap-2 px-4 md:px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${isActive
-                      ? 'bg-gray-100 text-gray-900 shadow-sm border border-gray-200/50'
-                      : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
-                    }`}
-                >
-                  <audience.icon className={`w-4 h-4 transition-colors ${isActive ? '' : 'text-gray-400'}`} style={isActive ? { color: audience.color } : {}} />
-                  <span className="hidden sm:inline">{audience.title}</span>
-                  <span className="sm:hidden">{audience.title.split(' ')[0]}</span>
-                </button>
-              );
-            })}
+        {/* Tab Switcher - Sliding pill animation */}
+        <div className="flex justify-center mb-14">
+          <div className="relative inline-flex gap-1 p-1.5 bg-white rounded-xl border border-gray-200/60 shadow-sm">
+            {/* Sliding background pill */}
+            <motion.div
+              className="absolute inset-y-1.5 rounded-lg bg-gray-100 border border-gray-200/50 shadow-sm"
+              animate={{ left: pillStyle.left, width: pillStyle.width }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
+            />
+
+            {audiences.map((audience, index) => (
+              <button
+                key={index}
+                ref={(el) => { tabRefs.current[index] = el; }}
+                onClick={() => handleTabClick(index)}
+                className={`relative z-10 flex items-center gap-2 px-4 md:px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-200 ${
+                  activeTab === index
+                    ? "text-gray-900"
+                    : "text-gray-400 hover:text-gray-600"
+                }`}
+              >
+                <audience.icon
+                  className="w-4 h-4"
+                  style={{ color: activeTab === index ? audience.color : undefined }}
+                />
+                <span className="hidden sm:inline whitespace-nowrap">
+                  {audience.title}
+                </span>
+                <span className="sm:hidden">
+                  {audience.title.split(" ")[0]}
+                </span>
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Feature Spotlight - 2D Polished Look */}
+        {/* Feature Spotlight */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Content (Left) */}
           <div className="order-2 lg:order-1">
@@ -96,6 +129,7 @@ export function TargetAudienceSection() {
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
               >
+                {/* Color badge */}
                 <div
                   className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-bold mb-6"
                   style={{ backgroundColor: `${currentAudience.color}10`, color: currentAudience.color }}
@@ -135,9 +169,6 @@ export function TargetAudienceSection() {
           {/* Image (Right) */}
           <div className="order-1 lg:order-2">
             <div className="relative rounded-3xl overflow-hidden bg-white border border-gray-200 shadow-xl">
-              {/* Subtle glass effect frame decoration */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gray-200/50 to-transparent z-10" />
-
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
